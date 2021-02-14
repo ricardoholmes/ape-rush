@@ -18,6 +18,6 @@ public class Tsunami : MonoBehaviour
 
     void FixedUpdate()
     {
-        rigidbody.AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
+        GetComponent<Rigidbody>().AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
     }
 }
