@@ -39,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rigidbody.AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
-        //startSpeed += acceleration;
     }
 
     void OnCollisionEnter(Collision collision)
