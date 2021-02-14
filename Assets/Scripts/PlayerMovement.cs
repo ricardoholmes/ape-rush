@@ -61,11 +61,11 @@ public class PlayerMovement : MonoBehaviour
         speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (10 * Time.deltaTime))} km/h";
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collider.CompareTag("Obstacle"))
         {
-            float mass = collision.transform.GetComponent<Obstacle>().mass;
+            float mass = collider.GetComponent<Obstacle>().mass;
             float difference = monkeCount - mass;
 
             if (difference >= 0) { }
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
                 monkeCount = Mathf.Clamp(Mathf.FloorToInt((3 * monkeCount) / 4), 1, int.MaxValue);
             }
 
-            Destroy(collision.gameObject);
+            Destroy(collider.gameObject);
             currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeCount, 0, maxSpeed);
         }
     }

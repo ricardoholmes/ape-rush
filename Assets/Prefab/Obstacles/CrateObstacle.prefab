@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8425456840675564605}
   - component: {fileID: 3646742679349971906}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: CrateObstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2470019005144726253}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
