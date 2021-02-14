@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static int monkeCount;
+
     public float startSpeed = 2f;
     public float acceleration = 1f;
 
@@ -38,5 +40,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidbody.AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
         //startSpeed += acceleration;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
     }
 }
