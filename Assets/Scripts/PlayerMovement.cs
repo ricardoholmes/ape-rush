@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
     public static int monkeCount = 1;
 
-    public float startSpeed = 20f;
+    public float startSpeed = 1f;
+    public float maxSpeed = 50f;
     float currentSpeed;
-    public static float acceleration = 10f;
+    public static float acceleration = 2f;
 
     public float horizontalSpeed = 10f;
 
+    public TextMeshProUGUI speedText;
+
     new Rigidbody rigidbody;
+
+    [Range(0.5f, 10f)]
+    public float obstacleSlowCoefficient = 0.5f;
 
     private void Awake()
     {
@@ -29,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, -Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
 
+        speedText.text = $"{Mathf.RoundToInt(currentSpeed * 3.6f)} km/h";
+
         //if (Input.GetMouseButton(0))
         //{
         //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -43,31 +52,26 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        rigidbody.AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
+        rigidbody.AddForce(Vector3.right * currentSpeed);
+        currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            float difference = monkeCount - collision.transform.GetComponent<Obstacle>().mass;
-            if (difference > 0)
-            {
-                Destroy(collision.gameObject);
-            }
+            float mass = collision.transform.GetComponent<Obstacle>().mass;
+            float difference = monkeCount - mass;
 
-            else if (difference == 0)
-            {
-                if (monkeCount == 1)
-                {
-                    Destroy(collision.gameObject);
-                }
-            }
+            if (difference >= 0) { }
 
             else
             {
-
+                monkeCount = Mathf.Clamp(Mathf.FloorToInt((3 * monkeCount) / 4), 1, int.MaxValue);
             }
+
+            Destroy(collision.gameObject);
+            currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeCount, 0, maxSpeed);
         }
     }
 }
