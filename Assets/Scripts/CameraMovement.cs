@@ -18,6 +18,7 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = target.position - relPos;
+        Vector3 targetPos = target.position - relPos;
+        Debug.Log((transform.position - target.position).magnitude);L
     }
 }
