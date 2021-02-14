@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float startSpeed = 1f;
     public float maxSpeed = 50f;
     float currentSpeed;
-    public static float acceleration = 2f;
+    public static float acceleration = 0.5f;
 
     public float horizontalSpeed = 10f;
 
@@ -36,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, -Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
 
-        speedText.text = $"{Mathf.RoundToInt(currentSpeed * 3.6f)} km/h";
+        speedText.text = $"{Mathf.RoundToInt(currentSpeed * 3.6f * 3)} km/h";
+        //speedText.text = $"{Mathf.RoundToInt(currentSpeed * 3.6f)} km/h";
 
         //if (Input.GetMouseButton(0))
         //{
@@ -52,7 +53,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        rigidbody.AddForce(Vector3.right * currentSpeed);
+        //rigidbody.AddForce(Vector3.right * currentSpeed);
+        transform.position += Vector3.right * currentSpeed;
         currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
     }
 

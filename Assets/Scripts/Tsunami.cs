@@ -25,7 +25,7 @@ public class Tsunami : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("DEATH");
             //collision.gameObject.Die();
