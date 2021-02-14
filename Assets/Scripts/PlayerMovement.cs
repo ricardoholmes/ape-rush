@@ -43,5 +43,17 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            float difference = monkeCount - collision.transform.GetComponent<Obstacle>().mass;
+            if (difference > 0)
+            {
+                Destroy(collision.gameObject);
+            }
+
+            else if (difference == 0) { }
+
+            else { }
+        }
     }
 }
