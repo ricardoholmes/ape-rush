@@ -582,7 +582,7 @@ PrefabInstance:
     - target: {fileID: 2782068659213477706, guid: 108d50c1aaa2f3c46811ed6d63a145ce,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.36
+      value: 36.33
       objectReference: {fileID: 0}
     - target: {fileID: 2782068659213477706, guid: 108d50c1aaa2f3c46811ed6d63a145ce,
         type: 3}
@@ -855,11 +855,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c00cc2c2a18bb2479c1f39eb1be80f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 2
+  startSpeed: 0
   maxSpeed: 50
   horizontalSpeed: 10
   speedText: {fileID: 820989538}
-  obstacleSlowCoefficient: 5
+  obstacleSlowCoefficient: 10
 --- !u!136 &1612269715
 CapsuleCollider:
   m_ObjectHideFlags: 0
