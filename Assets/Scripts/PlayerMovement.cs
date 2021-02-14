@@ -13,17 +13,19 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        rigidbody.maxAngularVelocity = 25;
     }
 
     private void Update()
     {
         if (Input.GetMouseButton(0))
         {
-            Vector3 pos = transform.position;
-            pos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-            transform.position = pos;
-
-            Debug.Log(pos.x);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100, LayerMask.NameToLayer("Terrain")))
+            {
+                Debug.Log(hit.point);
+            }
         }
     }
 
