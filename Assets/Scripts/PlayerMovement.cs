@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float startSpeed = 2f;
     public float acceleration = 1f;
 
-    public float horizontalSpeed = 0.1f;
+    public float horizontalSpeed = 10f;
 
     new Rigidbody rigidbody;
 
@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position += new Vector3(Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime, 0);
+        Debug.Log(Input.GetAxisRaw("Horizontal"));
+        transform.position += new Vector3(-Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime, 0);
 
         //if (Input.GetMouseButton(0))
         //{
