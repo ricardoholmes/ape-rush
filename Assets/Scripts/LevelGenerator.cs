@@ -8,7 +8,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform nextLevel;
     [SerializeField] private Transform player;
 
-    private float triggerDistance = 800f;
+    private float triggerDistance = 200f;
     private Vector3 lastEndPosition;
     void Start()
     {
