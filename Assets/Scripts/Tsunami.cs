@@ -7,6 +7,8 @@ public class Tsunami : MonoBehaviour
     [SerializeField] private Transform player;
     private float acceleration = PlayerMovement.acceleration;
 
+    new Rigidbody rigidbody;
+
     void Start()
     {
     }
@@ -19,5 +21,13 @@ public class Tsunami : MonoBehaviour
     void FixedUpdate()
     {
         GetComponent<Rigidbody>().AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
+    }
+
+    void OnCollisionEnter(Collider collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+
+        }
     }
 }
