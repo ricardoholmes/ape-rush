@@ -9,8 +9,6 @@ public class CameraMovement : MonoBehaviour
     public Transform target;
     float relX;
 
-    Vector3 velocity;
-
     // Start is called before the first frame update
     void Start()
     {
