@@ -8,13 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public static int monkeCount = 1;
 
     public float startSpeed = 1f;
-    public float maxSpeed = 50f;
+    public float maxSpeed = 35f;
     float currentSpeed;
     public static float acceleration = 0.5f;
 
     public float horizontalSpeed = 10f;
 
     public TextMeshProUGUI speedText;
+    public TextMeshProUGUI distanceTravelled;
 
     new Rigidbody rigidbody;
 
@@ -36,7 +37,9 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, -Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
 
-        speedText.text = $"{Mathf.RoundToInt(currentSpeed * 3.6f * 3)} km/h";
+        speedText.text = $"{Mathf.RoundToInt(3.6f * transform.position.x / Time.timeSinceLevelLoad)} km/h";
+        distanceTravelled.text = $"{Mathf.RoundToInt(transform.position.x)} m";
+        Debug.Log($"{Mathf.RoundToInt(currentSpeed)} / {Mathf.RoundToInt(transform.position.x / Time.timeSinceLevelLoad)}");
         //speedText.text = $"{Mathf.RoundToInt(currentSpeed * 3.6f)} km/h";
 
         //if (Input.GetMouseButton(0))
