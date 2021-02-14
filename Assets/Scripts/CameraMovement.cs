@@ -14,14 +14,14 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        relZ = target.position.z - transform.position.z;
+        relZ = target.position.x - transform.position.x;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         Vector3 targetPos = transform.position;
-        targetPos.z = target.position.z - relZ;
+        targetPos.x = target.position.x - relZ;
 
         //Vector3 smoothPosition = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothSpeed);
         //transform.position = smoothPosition;
