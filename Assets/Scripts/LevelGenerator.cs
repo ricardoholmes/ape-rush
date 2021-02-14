@@ -8,24 +8,23 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform nextLevel;
     [SerializeField] private Transform player;
 
-    private float triggerDistance = 50f;
-
-    //public Transform player;
+    private float triggerDistance = 800f;
     private Vector3 lastEndPosition;
-    // Start is called before the first frame update
     void Start()
     {
         lastEndPosition = firstLevel.Find("EndPosition").position;
-        SpawnLevel();
-        SpawnLevel();
+        
+        for (int i = 0; i < 5; i++)
+        {
+            SpawnLevel();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Vector3.Distance(player.position, lastEndPosition) < triggerDistance)
         {
-
+            SpawnLevel();
         }
     }
 
