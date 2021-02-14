@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Input.GetAxisRaw("Horizontal"));
         transform.position += new Vector3(-Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime, 0);
 
         //if (Input.GetMouseButton(0))
