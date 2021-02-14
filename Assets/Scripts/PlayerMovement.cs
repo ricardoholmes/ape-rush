@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        rigidbody.AddForce(-Vector3.forward * acceleration, ForceMode.Acceleration);
+        rigidbody.AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
         //startSpeed += acceleration;
     }
 }
