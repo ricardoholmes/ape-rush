@@ -9,12 +9,15 @@ public class LevelGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //lastEndPosition = 
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (Vector3.Distance(player.GetPosition(), ))
+        //if (Vector3.Distance(player, lastEndPosition) < triggerDistance)
+        //{
+
+        //}
     }
 }
