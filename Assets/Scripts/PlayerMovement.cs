@@ -10,15 +10,27 @@ public class PlayerMovement : MonoBehaviour
     new Rigidbody rigidbody;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        rigidbody.AddForce(Vector3.forward * startSpeed, ForceMode.Acceleration);
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 pos = transform.position;
+            pos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+            transform.position = pos;
+
+            Debug.Log(pos.x);
+        }
+    }
+
+    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        rigidbody.AddForce(Vector3.forward * acceleration, ForceMode.Acceleration);
         //startSpeed += acceleration;
     }
 }
