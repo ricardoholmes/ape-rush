@@ -18,15 +18,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 1000, LayerMask.NameToLayer("Floor")))
-            {
-                Debug.Log(hit.point);
-            }
-        }
+        //if (Input.GetMouseButton(0))
+        //{
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(ray, out hit, 1000, LayerMask.NameToLayer("Floor")))
+        //    {
+        //        Debug.Log(hit.point);
+        //    }
+        //}
     }
 
     // Update is called once per frame
