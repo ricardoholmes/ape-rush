@@ -51,9 +51,18 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(collision.gameObject);
             }
 
-            else if (difference == 0) { }
+            else if (difference == 0)
+            {
+                if (monkeCount == 1)
+                {
+                    Destroy(gameObject);
+                }
+            }
 
-            else { }
+            else
+            {
+
+            }
         }
     }
 }
