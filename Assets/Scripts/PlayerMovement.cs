@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position += new Vector3(-Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime, 0);
+        transform.position += new Vector3(0, 0, Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
 
         //if (Input.GetMouseButton(0))
         //{
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        rigidbody.AddForce(-Vector3.forward * acceleration, ForceMode.Acceleration);
+        rigidbody.AddForce(-Vector3.right * acceleration, ForceMode.Acceleration);
         //startSpeed += acceleration;
     }
 }
