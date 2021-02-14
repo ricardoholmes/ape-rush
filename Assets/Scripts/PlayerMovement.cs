@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static int monkeCount;
+    public static int monkeCount = 1;
 
     public float startSpeed = 20f;
     public static float acceleration = 10f;
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (monkeCount == 1)
                 {
-                    Destroy(gameObject);
+                    Destroy(collision.gameObject);
                 }
             }
 
