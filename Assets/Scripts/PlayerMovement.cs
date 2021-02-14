@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static int monkeCount;
+    public static int monkeCount = 1;
 
-    public float startSpeed = 2f;
+    public float speed = 2f;
     public float acceleration = 1f;
 
     public float horizontalSpeed = 10f;
 
     new Rigidbody rigidbody;
 
-    // Start is called before the first frame update
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -35,13 +34,25 @@ public class PlayerMovement : MonoBehaviour
         //}
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
         rigidbody.AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
+        speed += acceleration;
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            float difference = monkeCount - collision.transform.GetComponent<Obstacle>().mass;
+            if (difference > 0)
+            {
+                Destroy(collision.gameObject);
+            }
+
+            else if (difference == 0) { }
+
+            else { }
+        }
     }
 }
