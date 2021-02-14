@@ -37,9 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, -Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
 
-        speedText.text = $"{Mathf.RoundToInt(3.6f * transform.position.x / Time.timeSinceLevelLoad)} km/h";
-        distanceTravelled.text = $"{Mathf.RoundToInt(transform.position.x)} m";
-        Debug.Log($"{Mathf.RoundToInt(currentSpeed)} / {Mathf.RoundToInt(transform.position.x / Time.timeSinceLevelLoad)}");
+        distanceTravelled.text = $"{Mathf.RoundToInt(transform.position.x / 10)} m";
         //speedText.text = $"{Mathf.RoundToInt(currentSpeed * 3.6f)} km/h";
 
         //if (Input.GetMouseButton(0))
@@ -56,9 +54,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        float previousX = transform.position.x;
         //rigidbody.AddForce(Vector3.right * currentSpeed);
         transform.position += Vector3.right * currentSpeed;
         currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
+        speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (10 * Time.deltaTime))} km/h";
     }
 
     void OnCollisionEnter(Collision collision)

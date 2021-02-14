@@ -6,7 +6,7 @@ using TMPro;
 public class Tsunami : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    private float acceleration = PlayerMovement.acceleration * 1.05f;
+    private float acceleration = PlayerMovement.acceleration * 1.005f;
 
     public float maxSpeed = 42f;
     public float delay = 1.5f;
