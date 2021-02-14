@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100, LayerMask.NameToLayer("Terrain")))
+            if (Physics.Raycast(ray, out hit, 1000, LayerMask.NameToLayer("Floor")))
             {
                 Debug.Log(hit.point);
             }
