@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float startSpeed = 2f;
+    public float acceleration = 1f;
+
+    Vector3 directionFacing = Vector3.forward;
+
+    new Rigidbody rigidbody;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        rigidbody.AddForce(Vector3.forward * startSpeed * Time.fixedDeltaTime);
+        startSpeed += acceleration;
     }
 }
