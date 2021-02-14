@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rigidbody.AddForce(Vector3.forward * startSpeed * Time.fixedDeltaTime);
+        rigidbody.AddForce(Vector3.forward * startSpeed);
         startSpeed += acceleration;
     }
 }
