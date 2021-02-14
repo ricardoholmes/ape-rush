@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public static int monkeCount;
 
-    public float startSpeed = 2f;
-    public static float acceleration = 1f;
+    public float startSpeed = 20f;
+    public static float acceleration = 10f;
 
     public float horizontalSpeed = 10f;
 
