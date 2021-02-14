@@ -7,13 +7,18 @@ public class PlayerMovement : MonoBehaviour
     public static int monkeCount = 1;
 
     public float startSpeed = 20f;
+    float currentSpeed;
     public static float acceleration = 10f;
 
     public float horizontalSpeed = 10f;
 
     new Rigidbody rigidbody;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        currentSpeed = startSpeed;
+    }
+
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
