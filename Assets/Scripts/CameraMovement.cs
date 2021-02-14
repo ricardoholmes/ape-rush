@@ -7,18 +7,22 @@ public class CameraMovement : MonoBehaviour
     [Range(0, 1)]
     public float smoothSpeed;
     public Transform target;
-    Vector3 relPos;
+    float relX;
+
+    Vector3 velocity;
 
     // Start is called before the first frame update
     void Start()
     {
-        relPos = target.position - transform.position;
+        relX = target.position.x - transform.position.x;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 targetPos = target.position - relPos;
-        Debug.Log((transform.position - target.position).magnitude);L
+        Vector3 targetPos = transform.position;
+        targetPos.x = target.position.x - relX;
+
+        Vector3 smoothPosition = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothSpeed);
     }
 }
