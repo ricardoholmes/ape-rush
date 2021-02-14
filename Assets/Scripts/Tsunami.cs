@@ -23,11 +23,12 @@ public class Tsunami : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
     }
 
-    void OnCollisionEnter(Collider collision)
+    void OnCollisionEnter(Collision collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player")
         {
-
+            Debug.Log("DEATH");
+            //collision.gameObject.Die();
         }
     }
 }
