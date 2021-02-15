@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -650,7 +650,8 @@ MonoBehaviour:
   firstLevel: {fileID: 6353096079833296279, guid: f9092e08517120b4393081f5f2ce3391, type: 3}
   nextLevel: {fileID: 2725695303929897612, guid: 7ee0782d6a7d94543ad752ca02d0df14, type: 3}
   player: {fileID: 373045437}
-  cliff: {fileID: 1543080310}
+  maps:
+  - {fileID: 2725695303929897615, guid: 91105de018885604daafc1b27924d191, type: 3}
   biomePlaneMaterials:
   - {fileID: 2100000, guid: 17a551e18deda254b80811c78c0877f4, type: 2}
   - {fileID: 2100000, guid: 6929728e8f232e94ca28188d2212ed32, type: 2}
@@ -1140,11 +1141,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3.02}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1543080310 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7d58e33b9e67d04abcef27e45e583f2, type: 3}
-  m_PrefabInstance: {fileID: 653197065}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1978555209
 GameObject:
   m_ObjectHideFlags: 0
