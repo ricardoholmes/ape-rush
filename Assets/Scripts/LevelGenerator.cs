@@ -10,19 +10,22 @@ public class LevelGenerator : MonoBehaviour
 
     public List<Material> biomePlaneMaterials;
     int currentBiome;
-    int nextBiome;
     int biomeLengthRemaining;
+    public int minBiomeLength;
+    public int maxBiomeLength;
 
     private readonly float triggerDistance = 200f;
     private Vector3 lastEndPosition;
+
+    private void Awake()
+    {
+        currentBiome = 0;
+        biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
+    }
+
     void Start()
     {
         lastEndPosition = firstLevel.Find("EndPosition").position;
-        
-        for (int i = 0; i < 5; i++)
-        {
-            SpawnLevel();
-        }
     }
 
     void Update()
@@ -42,6 +45,18 @@ public class LevelGenerator : MonoBehaviour
     private Transform SpawnLevel(Vector3 spawnPosition)
     {
         Transform newLevelTransform = Instantiate(nextLevel, spawnPosition, Quaternion.identity);
+        newLevelTransform.GetComponent<Renderer>().material = biomePlaneMaterials[currentBiome];
+        biomeLengthRemaining--;
+        if (biomeLengthRemaining == 0)
+        {
+            List<int> possibleBiomes = new List<int>();
+            for (int i = 0; i < biomePlaneMaterials.Count; i++)
+                if (i != currentBiome)
+                    possibleBiomes.Add(i);
+
+            currentBiome = possibleBiomes[Random.Range(0, possibleBiomes.Count)];
+            biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
+        }
         return newLevelTransform;
     }
 }
