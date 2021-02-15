@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
         volumeMixer.SetFloat(type, Mathf.Log10(volume) * 20);
     }
 
-    public void ChangeMasterVolume(float vol) { ChangeVolume("Master", vol); }
-    public void ChangeMusicVolume(float vol) { ChangeVolume("Music", vol); }
-    public void ChangeSfxVolume(float vol) { ChangeVolume("Sfx", vol); }
+    public void ChangeMasterVolume(float vol) { ChangeVolume("MasterVol", vol); }
+    public void ChangeMusicVolume(float vol) { ChangeVolume("MusicVol", vol); }
+    public void ChangeSfxVolume(float vol) { ChangeVolume("SfxVol", vol); }
 }

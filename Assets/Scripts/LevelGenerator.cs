@@ -19,6 +19,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void Awake()
     {
+        // reset biome and biome length remaining
         currentBiome = 0;
         biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
     }
@@ -49,11 +50,15 @@ public class LevelGenerator : MonoBehaviour
         biomeLengthRemaining--;
         if (biomeLengthRemaining == 0)
         {
+            // remove start biome and current biome from options
+            // so that there arent 2 of the same biome in a row
+            // and so that the start biome is unique
             List<int> possibleBiomes = new List<int>();
-            for (int i = 0; i < biomePlaneMaterials.Count; i++)
+            for (int i = 1; i < biomePlaneMaterials.Count; i++)
                 if (i != currentBiome)
                     possibleBiomes.Add(i);
 
+            // randomly choose biome from allowed biomes and choose length of biome
             currentBiome = possibleBiomes[Random.Range(0, possibleBiomes.Count)];
             biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
         }
