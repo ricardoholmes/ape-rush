@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public static int monkeCount = 1;
 
     public float startSpeed = 1f;
-    public float maxSpeed = 35f;
+    public float maxSpeed = 10f;
     float currentSpeed;
     public static float acceleration = 0.5f;
 
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Die()
+    public static void Die()
     {
         SceneManager.LoadScene("MainMenu");
     }
