@@ -7,9 +7,6 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform firstLevel;
     [SerializeField] private Transform nextLevel;
     [SerializeField] private Transform player;
-    [SerializeField] private GameObject[] maps;
-
-    //public Transform cliff;
 
     public List<Material> biomePlaneMaterials;
     int currentBiome;
@@ -25,6 +22,10 @@ public class LevelGenerator : MonoBehaviour
         // reset biome and biome length remaining
         currentBiome = 0;
         biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
+    }
+
+    void Start()
+    {
         lastEndPosition = firstLevel.Find("EndPosition").position;
     }
 
@@ -38,21 +39,29 @@ public class LevelGenerator : MonoBehaviour
 
     private void SpawnLevel()
     {
-        Transform newLevelTransform = Instantiate(maps[Random.Range(0, maps.Length)].transform, lastEndPosition, Quaternion.identity);
+        Transform lastLevelPartTransform = SpawnLevel(lastEndPosition);
+        lastEndPosition = lastLevelPartTransform.Find("EndPosition").position;
+    }
+
+    private Transform SpawnLevel(Vector3 spawnPosition)
+    {
+        Transform newLevelTransform = Instantiate(nextLevel, spawnPosition, Quaternion.identity);
         newLevelTransform.GetComponent<Renderer>().material = biomePlaneMaterials[currentBiome];
         biomeLengthRemaining--;
-
         if (biomeLengthRemaining == 0)
         {
+            // remove start biome and current biome from options
+            // so that there arent 2 of the same biome in a row
+            // and so that the start biome is unique
             List<int> possibleBiomes = new List<int>();
-            for (int i = 0; i < biomePlaneMaterials.Count; i++)
+            for (int i = 1; i < biomePlaneMaterials.Count; i++)
                 if (i != currentBiome)
                     possibleBiomes.Add(i);
 
+            // randomly choose biome from allowed biomes and choose length of biome
             currentBiome = possibleBiomes[Random.Range(0, possibleBiomes.Count)];
             biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
         }
-
-        lastEndPosition = newLevelTransform.Find("EndPosition").position;
+        return newLevelTransform;
     }
 }
