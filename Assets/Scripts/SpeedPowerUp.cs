@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class SpeedPowerUp : MonoBehaviour
 {
-    public float acceleration = 50f;
-    public Transform player;
+    public float acceleration;
+    public Rigidbody player;
 
     void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
         {
-            Debug.Log(PlayerMovement.player.transform.position);
-            PlayerMovement.player.transform.position += Vector3.right * acceleration;
-            Debug.Log(PlayerMovement.player.transform.position);
-
+            player.AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
             Destroy(gameObject);
         }
     }

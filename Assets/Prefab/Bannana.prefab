@@ -108,4 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f28307078fb2145897731a24de3f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 50
+  acceleration: 60
+  player: {fileID: 663836900647368674, guid: d1b534f8a638cb34ca465530b4f9a917, type: 3}
