@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] private Transform firstLevel;
-    [SerializeField] private Transform nextLevel;
     [SerializeField] private Transform player;
     [SerializeField] private GameObject[] maps;
 
@@ -27,7 +25,7 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        lastEndPosition = firstLevel.Find("EndPosition").position;
+        lastEndPosition = new Vector3(player.position.x, 0);
     }
 
     void Update()
