@@ -586,8 +586,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba018d2992771dd4a9bc0414dd933cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevel: {fileID: 6353096079833296279, guid: f9092e08517120b4393081f5f2ce3391, type: 3}
-  nextLevel: {fileID: 2725695303929897612, guid: 7ee0782d6a7d94543ad752ca02d0df14, type: 3}
   player: {fileID: 373045437}
   maps:
   - {fileID: 2725695303929897615, guid: 91105de018885604daafc1b27924d191, type: 3}
@@ -964,7 +962,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1505290284
 MonoBehaviour:
   m_ObjectHideFlags: 0
