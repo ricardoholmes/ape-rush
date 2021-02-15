@@ -606,7 +606,6 @@ MonoBehaviour:
   player: {fileID: 373045437}
   maps:
   - {fileID: 2725695303929897615, guid: 91105de018885604daafc1b27924d191, type: 3}
-  - {fileID: 2725695303929897615, guid: 62ff910a14651d649b7a45e3396d09f4, type: 3}
   biomePlaneMaterials:
   - {fileID: 2100000, guid: 17a551e18deda254b80811c78c0877f4, type: 2}
   - {fileID: 2100000, guid: 6929728e8f232e94ca28188d2212ed32, type: 2}
