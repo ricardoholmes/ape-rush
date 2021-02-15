@@ -43,8 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
         distanceTravelled.text = $"{Mathf.RoundToInt(transform.position.x / 10)}m";
 
-        animator.speed = Mathf.Log(currentSpeed, startSpeed);
-        Debug.Log(animator.speed);
+        animator.speed = Mathf.Log(1f, startSpeed);
 
         //speedText.text = $"{Mathf.RoundToInt(currentSpeed * 3.6f)} km/h";
 
