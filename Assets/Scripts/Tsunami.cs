@@ -22,7 +22,7 @@ public class Tsunami : MonoBehaviour
 
     private void Start()
     {
-        maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
+        maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.01f;
     }
 
     void Update()
