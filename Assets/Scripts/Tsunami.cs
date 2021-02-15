@@ -27,7 +27,7 @@ public class Tsunami : MonoBehaviour
 
     void Update()
     {
-        distanceText.text = $"{Mathf.RoundToInt(player.position.x - transform.position.x)} m";
+        distanceText.text = $"{Mathf.RoundToInt(player.position.x - transform.position.x)}m";
     }
 
     void FixedUpdate()
