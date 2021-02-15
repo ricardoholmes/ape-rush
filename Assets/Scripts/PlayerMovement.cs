@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public static void Die()
+    public void Die()
     {
         SceneManager.LoadScene("MainMenu");
     }
