@@ -8,6 +8,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform nextLevel;
     [SerializeField] private Transform player;
 
+    public Transform cliff;
+
     public List<Material> biomePlaneMaterials;
     int currentBiome;
     int biomeLengthRemaining;
@@ -26,6 +28,9 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
+        //Instantiate(cliff, new Vector3(3 * cliff.position.x, cliff.position.y, cliff.position.z), cliff.rotation);
+        //Instantiate(cliff, new Vector3(5 * cliff.position.x, cliff.position.y, cliff.position.z), cliff.rotation);
+        //Instantiate(cliff, new Vector3(7 * cliff.position.x, cliff.position.y, cliff.position.z), cliff.rotation);
         lastEndPosition = firstLevel.Find("EndPosition").position;
     }
 
