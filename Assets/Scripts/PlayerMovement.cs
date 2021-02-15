@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     private Animator animator;
+    public static Transform player;
 
     public static int monkeCount = 1;
 
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.maxAngularVelocity = 25;
+        player = transform;
     }
 
     private void Update()
