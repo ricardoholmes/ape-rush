@@ -8,6 +8,11 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform nextLevel;
     [SerializeField] private Transform player;
 
+    public List<Material> biomePlaneMaterials;
+    int currentBiome;
+    int nextBiome;
+    int biomeLengthRemaining;
+
     private readonly float triggerDistance = 200f;
     private Vector3 lastEndPosition;
     void Start()
