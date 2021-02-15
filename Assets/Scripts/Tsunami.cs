@@ -8,18 +8,21 @@ public class Tsunami : MonoBehaviour
     [SerializeField] private Transform player;
     private float acceleration = PlayerMovement.acceleration * 1.005f;
 
-    public float maxSpeed = 42f;
+    public float maxSpeed;
     public float delay = 1.5f;
     private float currentSpeed = 0;
 
     public TextMeshProUGUI distanceText;
 
-    new Rigidbody rigidbody;
-
     private float startTime;
     private void Awake()
     {
         startTime = Time.time + delay;
+    }
+
+    private void Start()
+    {
+        maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
     }
 
     void Update()

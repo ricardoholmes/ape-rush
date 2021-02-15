@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 0
-  maxSpeed: 20
+  maxSpeed: 10
   horizontalSpeed: 10
   speedText: {fileID: 820989538}
   distanceTravelled: {fileID: 1074113580}

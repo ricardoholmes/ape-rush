@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerMovement : MonoBehaviour
@@ -78,5 +79,10 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collider.gameObject);
             currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeCount, 0, maxSpeed);
         }
+    }
+
+    public void Die()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
