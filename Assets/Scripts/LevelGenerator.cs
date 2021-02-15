@@ -24,13 +24,6 @@ public class LevelGenerator : MonoBehaviour
         // reset biome and biome length remaining
         currentBiome = 0;
         biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
-    }
-
-    void Start()
-    {
-        //Instantiate(cliff, new Vector3(3 * cliff.position.x, cliff.position.y, cliff.position.z), cliff.rotation);
-        //Instantiate(cliff, new Vector3(5 * cliff.position.x, cliff.position.y, cliff.position.z), cliff.rotation);
-        //Instantiate(cliff, new Vector3(7 * cliff.position.x, cliff.position.y, cliff.position.z), cliff.rotation);
         lastEndPosition = firstLevel.Find("EndPosition").position;
     }
 
