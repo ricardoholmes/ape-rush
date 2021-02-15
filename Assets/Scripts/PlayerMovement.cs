@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         //rigidbody.AddForce(Vector3.right * currentSpeed);
         transform.position += Vector3.right * currentSpeed;
         currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
-        speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (10 * Time.deltaTime))}km/h";
+        speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (10 * Time.deltaTime))} kph";
     }
 
     void OnTriggerEnter(Collider collider)
