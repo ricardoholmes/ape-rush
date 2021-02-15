@@ -6,6 +6,8 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Animator animator;
+
     public static int monkeCount = 1;
 
     public float startSpeed = 1f;
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.maxAngularVelocity = 25;
     }
@@ -39,6 +42,9 @@ public class PlayerMovement : MonoBehaviour
         transform.position += new Vector3(0, 0, -Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
 
         distanceTravelled.text = $"{Mathf.RoundToInt(transform.position.x / 10)}m";
+
+        animator.speed = Mathf.Log(currentSpeed, startSpeed);
+
         //speedText.text = $"{Mathf.RoundToInt(currentSpeed * 3.6f)} km/h";
 
         //if (Input.GetMouseButton(0))
