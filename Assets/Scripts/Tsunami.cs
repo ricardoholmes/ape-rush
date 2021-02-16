@@ -6,10 +6,10 @@ using TMPro;
 public class Tsunami : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    private float acceleration = PlayerMovement.acceleration * 1.005f;
+    private float acceleration = PlayerMovement.acceleration * 1.1f;
 
     public float maxSpeed;
-    public float delay = 1.5f;
+    public float delay = 1f;
     private float currentSpeed = 0;
 
     public TextMeshProUGUI distanceText;
@@ -22,7 +22,7 @@ public class Tsunami : MonoBehaviour
 
     private void Start()
     {
-        maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.01f;
+        maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.3f;
     }
 
     void Update()
