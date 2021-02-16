@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
     void SpawnMonkey()
     {
-        // spawns monkeys
+        // spawns a monkey
         return;
     }
 }
