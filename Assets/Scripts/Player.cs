@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         player = transform;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
