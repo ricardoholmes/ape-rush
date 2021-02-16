@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     float currentSpeed;
     public static float acceleration = 0.5f;
 
+    public static bool isBoosting = false;
+    public static float boostAmount;
+    public static float stopBoostingTime;
+
     public float horizontalSpeed = 10f;
 
     public TextMeshProUGUI speedText;
@@ -46,18 +50,6 @@ public class PlayerMovement : MonoBehaviour
         distanceTravelled.text = $"{Mathf.RoundToInt(transform.position.x / 10)}m";
 
         animator.speed = Mathf.Clamp(currentSpeed / 2, 0.5f, float.PositiveInfinity);
-
-        //speedText.text = $"{Mathf.RoundToInt(currentSpeed * 3.6f)} km/h";
-
-        //if (Input.GetMouseButton(0))
-        //{
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(ray, out hit, 1000, LayerMask.NameToLayer("Floor")))
-        //    {
-        //        Debug.Log(hit.point);
-        //    }
-        //}
     }
 
     // Update is called once per frame
@@ -66,7 +58,21 @@ public class PlayerMovement : MonoBehaviour
         float previousX = transform.position.x;
         //rigidbody.AddForce(Vector3.right * currentSpeed);
         transform.position += Vector3.right * currentSpeed;
-        currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
+
+        if (isBoosting && Time.time > stopBoostingTime)
+        {
+            isBoosting = false;
+        }
+
+        if (!isBoosting)
+        {
+            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
+        }
+        else
+        {
+            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount);
+        }
+
         speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (10 * Time.deltaTime))} kph";
     }
 
