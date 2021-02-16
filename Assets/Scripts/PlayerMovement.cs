@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public static float boostAmount;
     public static float stopBoostingTime;
 
-    public float horizontalSpeed = 10f;
+    //public float horizontalSpeed = 10f;
+    public float horizontalForce = 10f;
 
     public TextMeshProUGUI speedText;
     public TextMeshProUGUI distanceTravelledText;
@@ -43,7 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position += new Vector3(0, 0, -Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
+        //transform.position += new Vector3(0, 0, -Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
+        rigidbody.AddForce(-Input.GetAxisRaw("Horizontal") * horizontalForce * Vector3.forward, ForceMode.VelocityChange);
 
         distanceTravelledText.text = $"{Mathf.RoundToInt(distanceTravelled / 10)}m";
         animator.speed = Mathf.Clamp(currentSpeed / 50, 1f, float.PositiveInfinity);
@@ -103,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeyCount, 0, maxSpeed);
         }
 
-        else if (collider.CompareTag("PowerUp"))
+        else if (collider.CompareTag("Cage"))
         {
             currentSpeed = Mathf.Clamp(currentSpeed * 0.75f, 0, maxSpeed);
         }
