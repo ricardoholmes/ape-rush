@@ -11,8 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public float startSpeed = 1f;
     public float maxSpeed = 10f;
     float currentSpeed;
-    public static float acceleration = 0.5f;
+    public float acceleration = 2f;
     public float deceleration = 1f;
+    private float distanceTravelled;
 
     public static bool isBoosting = false;
     public static float boostAmount;
@@ -21,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float horizontalSpeed = 10f;
 
     public TextMeshProUGUI speedText;
-    public TextMeshProUGUI distanceTravelled;
+    public TextMeshProUGUI distanceTravelledText;
 
     new Rigidbody rigidbody;
 
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        distanceTravelled = 0;
         currentSpeed = startSpeed;
     }
 
@@ -44,8 +46,7 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, -Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
 
-        distanceTravelled.text = $"{Mathf.RoundToInt(transform.position.x / 10)}m";
-
+        distanceTravelledText.text = $"{Mathf.RoundToInt(distanceTravelled / 10)}m";
         animator.speed = Mathf.Clamp(currentSpeed, 1f, float.PositiveInfinity);
     }
 
@@ -54,7 +55,8 @@ public class PlayerMovement : MonoBehaviour
     {
         float previousX = transform.position.x;
         //rigidbody.AddForce(Vector3.right * currentSpeed);
-        transform.position += Vector3.right * currentSpeed;
+        transform.position += Vector3.right * currentSpeed * Time.fixedDeltaTime;
+        distanceTravelled += currentSpeed * Time.fixedDeltaTime;
 
         if (isBoosting && Time.time > stopBoostingTime)
         {
@@ -78,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount);
         }
 
-        speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (10 * Time.deltaTime))} kph";
+        speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (Time.deltaTime))} kph";
     }
 
     void OnTriggerEnter(Collider collider)

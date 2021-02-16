@@ -34,11 +34,29 @@ public class LevelGenerator : MonoBehaviour
         {
             SpawnLevel();
         }
+
+        if (lastEndPosition.x >= 3000)
+        {
+            MoveBack();
+        }
+    }
+
+    private void MoveBack()
+    {
+        Vector3 moveVector = Vector3.left * 2500;
+        
+        Tsunami.tsunami.position += moveVector;
+        Player.player.position += moveVector;
+
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).position += moveVector;
+
+        lastEndPosition += moveVector;
     }
 
     private void SpawnLevel()
     {
-        Transform newLevelTransform = Instantiate(maps[Random.Range(0, maps.Length)].transform, lastEndPosition, Quaternion.identity);
+        Transform newLevelTransform = Instantiate(maps[Random.Range(0, maps.Length)].transform, lastEndPosition, Quaternion.identity, transform);
         newLevelTransform.GetComponent<Renderer>().material = biomePlaneMaterials[currentBiome];
         biomeLengthRemaining--;
         if (biomeLengthRemaining == 0)

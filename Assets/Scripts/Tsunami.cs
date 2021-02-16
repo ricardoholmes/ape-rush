@@ -5,8 +5,10 @@ using TMPro;
 
 public class Tsunami : MonoBehaviour
 {
+    public static Transform tsunami;
+
     private Transform player;
-    private readonly float acceleration = PlayerMovement.acceleration * 1.1f;
+    private float acceleration;
 
     public float maxSpeed;
     public float delay = 1f;
@@ -22,8 +24,10 @@ public class Tsunami : MonoBehaviour
 
     private void Start()
     {
+        tsunami = transform;
         player = Player.player;
         maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
+        acceleration = player.GetComponent<PlayerMovement>().acceleration * 1.1f;
     }
 
     void Update()
