@@ -7,9 +7,6 @@ using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     private Animator animator;
-    public static Transform player;
-
-    public static int monkeCount = 1;
 
     public float startSpeed = 1f;
     public float maxSpeed = 10f;
@@ -41,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.maxAngularVelocity = 25;
-        player = transform;
     }
 
     private void Update()
@@ -89,18 +85,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collider.CompareTag("Obstacle"))
         {
+            // +1 to account for player
+            int monkeyCount = Player.monkeyCount + 1;
+
             float mass = collider.GetComponent<Obstacle>().mass;
-            float difference = monkeCount - mass;
+            float difference = monkeyCount - mass;
 
             if (difference >= 0) { }
 
             else
             {
-                monkeCount = Mathf.Clamp(Mathf.FloorToInt((3 * monkeCount) / 4), 1, int.MaxValue);
+                monkeyCount = Mathf.Clamp(Mathf.FloorToInt((3 * monkeyCount) / 4), 1, int.MaxValue);
             }
 
             Destroy(collider.gameObject);
-            currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeCount, 0, maxSpeed);
+            currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeyCount, 0, maxSpeed);
         }
     }
 

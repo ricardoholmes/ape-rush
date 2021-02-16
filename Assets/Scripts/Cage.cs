@@ -8,7 +8,7 @@ public class Cages : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            PlayerMovement.monkeCount++;
+            Player.monkeyCount++;
             Destroy(gameObject);
         }
     }

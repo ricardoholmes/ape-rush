@@ -5,7 +5,7 @@ using TMPro;
 
 public class Tsunami : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    private Transform player;
     private float acceleration = PlayerMovement.acceleration * 1.1f;
 
     public float maxSpeed;
@@ -22,6 +22,7 @@ public class Tsunami : MonoBehaviour
 
     private void Start()
     {
+        player = Player.player;
         maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
     }
 
