@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public static int monkeyCount = 0;
+    private List<Transform> spawnPositions = new List<Transform>();
+    public GameObject monkey;
+
+    public static int monkeyCount = 10;
     public static Transform player;
 
     private float nextApeSound;
@@ -14,6 +17,9 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         nextApeSound = Time.time + Random.Range(10, 20);
+        for (int i = 0; i < transform.childCount; i++)
+            if (transform.GetChild(i).name.Contains("Pos"))
+                spawnPositions.Add(transform.GetChild(i));
     }
 
     private void Start()
@@ -30,20 +36,36 @@ public class Player : MonoBehaviour
             nextApeSound = Time.time + Random.Range(10, 20);
         }
 
-        if (transform.childCount < monkeyCount)
+        if (MonkeyChildCount() < monkeyCount)
         {
-            for (int i = 0; i < monkeyCount - transform.childCount; i++)
+            for (int i = 0; i < monkeyCount - MonkeyChildCount(); i++)
                 SpawnMonkey();
         }
     }
+
     public static void Die()
     {
         SceneManager.LoadScene("MainMenu");
     }
 
-    void SpawnMonkey()
+    public int MonkeyChildCount()
+    {
+        int count = 0;
+        for (int i = 0; i < transform.childCount; i++)
+            if (transform.GetChild(i).CompareTag("Monkey"))
+                count++;
+
+        return count;
+    }
+
+    private void SpawnMonkey()
     {
         // spawns a monkey
-        return;
+        Transform pos = spawnPositions[Random.Range(0, spawnPositions.Count)];
+        Instantiate(monkey, pos.position, Quaternion.identity, transform);
+
+        Vector3 newPos = pos.position;
+        newPos.x -= 3;
+        pos.position = newPos;
     }
 }

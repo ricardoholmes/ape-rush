@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - PowerUp
+  - Monkey
   layers:
   - Default
   - TransparentFX
