@@ -102,5 +102,10 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collider.gameObject);
             currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeyCount, 0, maxSpeed);
         }
+
+        else if (collider.CompareTag("PowerUp"))
+        {
+            currentSpeed = Mathf.Clamp(currentSpeed * 0.75f, 0, maxSpeed);
+        }
     }
 }
