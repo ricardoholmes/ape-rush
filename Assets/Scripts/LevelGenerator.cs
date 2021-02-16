@@ -35,7 +35,7 @@ public class LevelGenerator : MonoBehaviour
             SpawnLevel();
         }
 
-        if (lastEndPosition.x >= 3000)
+        if (lastEndPosition.x >= 1000)
         {
             MoveBack();
         }
@@ -43,7 +43,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void MoveBack()
     {
-        Vector3 moveVector = Vector3.left * 2500;
+        Vector3 moveVector = Vector3.left * 2000;
         
         Tsunami.tsunami.position += moveVector;
         Player.player.position += moveVector;
