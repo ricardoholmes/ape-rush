@@ -22,12 +22,12 @@ public class Tsunami : MonoBehaviour
 
     private void Start()
     {
-        maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.3f;
+        maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
     }
 
     void Update()
     {
-        distanceText.text = $"{Mathf.RoundToInt(player.position.x - transform.position.x)}m";
+        distanceText.text = $"{Mathf.RoundToInt((player.position.x - transform.position.x) / 10)}m";
     }
 
     void FixedUpdate()
