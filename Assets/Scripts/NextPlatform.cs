@@ -6,7 +6,7 @@ public class NextPlatform : MonoBehaviour
 {
     void Update()
     {
-        if (Camera.main.transform.position.x - 10 > transform.position.x)
+        if (Camera.main.transform.position.x - 100 > transform.position.x)
         {
             Destroy(gameObject);
         }

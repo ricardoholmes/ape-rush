@@ -13,9 +13,8 @@ public class LevelGenerator : MonoBehaviour
     public int minBiomeLength;
     public int maxBiomeLength;
 
-    private readonly float triggerDistance = 200f;
+    private readonly float triggerDistance = 300f;
     private Vector3 lastEndPosition;
-
     private void Awake()
     {
         // reset biome and biome length remaining
@@ -25,7 +24,7 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        lastEndPosition = new Vector3(player.position.x, 0);
+        lastEndPosition = new Vector3(player.position.x, 0) + new Vector3(80, 0, 0);
     }
 
     void Update()
@@ -58,6 +57,8 @@ public class LevelGenerator : MonoBehaviour
     private void SpawnLevel()
     {
         Transform newLevelTransform = Instantiate(maps[Random.Range(0, maps.Length)].transform, lastEndPosition, Quaternion.identity, transform);
+        lastEndPosition = newLevelTransform.Find("EndPosition").position + new Vector3(95, 0, 0);
+
         newLevelTransform.GetComponent<Renderer>().material = biomePlaneMaterials[currentBiome];
         biomeLengthRemaining--;
         if (biomeLengthRemaining == 0)
@@ -70,7 +71,5 @@ public class LevelGenerator : MonoBehaviour
             currentBiome = possibleBiomes[Random.Range(0, possibleBiomes.Count)];
             biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
         }
-
-        lastEndPosition = newLevelTransform.Find("EndPosition").position;
     }
 }
