@@ -131,10 +131,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 0
   maxSpeed: 2
+  acceleration: 0.5
   deceleration: 1
   horizontalSpeed: 10
   speedText: {fileID: 0}
-  distanceTravelled: {fileID: 0}
+  distanceTravelledText: {fileID: 0}
   obstacleSlowCoefficient: 5
 --- !u!114 &5824387760385687010
 MonoBehaviour:
@@ -155,14 +156,14 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429818839810106607}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5098242400210294145, guid: aa73a0a28f0d3dd4e8af6d9aed110efd, type: 2}
   m_audioClip: {fileID: 8300000, guid: 35a8f8d4825031844935aaa63146fe14, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

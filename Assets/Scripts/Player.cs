@@ -8,6 +8,14 @@ public class Player : MonoBehaviour
     public static int monkeyCount = 0;
     public static Transform player;
 
+    private float nextApeSound;
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        nextApeSound = Time.time + Random.Range(10, 20);
+    }
+
     private void Start()
     {
         player = transform;
@@ -15,6 +23,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Time.time > nextApeSound)
+        {
+            audioSource.Play();
+            nextApeSound = Time.time + Random.Range(10, 20);
+        }
+
         if (transform.childCount < monkeyCount)
         {
             for (int i = 0; i < monkeyCount - transform.childCount; i++)
