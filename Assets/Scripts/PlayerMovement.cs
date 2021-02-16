@@ -67,9 +67,11 @@ public class PlayerMovement : MonoBehaviour
         if (!isBoosting)
         {
             currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
+            //currentSpeed = currentSpeed + acceleration * Time.fixedDeltaTime;
         }
         else
         {
+            // It never enters this else. maybe because isBoosting is static
             currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount);
         }
 

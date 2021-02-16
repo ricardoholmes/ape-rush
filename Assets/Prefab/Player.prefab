@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 0
-  maxSpeed: 4
+  maxSpeed: 2
   horizontalSpeed: 10
   speedText: {fileID: 0}
   distanceTravelled: {fileID: 0}
