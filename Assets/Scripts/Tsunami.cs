@@ -39,7 +39,7 @@ public class Tsunami : MonoBehaviour
     {
         if (Time.time > startTime)
         {
-            transform.position += Vector3.right * currentSpeed;
+            transform.position += Vector3.right * currentSpeed * Time.fixedDeltaTime;
             currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
         }
         // GetComponent<Rigidbody>().AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
