@@ -7,8 +7,9 @@ public class Player : MonoBehaviour
 {
     private List<Transform> spawnPositions = new List<Transform>();
     public GameObject monkey;
+    private int index;
 
-    public static int monkeyCount = 10;
+    public static int monkeyCount = 0;
     public static Transform player;
 
     private float nextApeSound;
@@ -16,6 +17,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        index = 0;
+        monkeyCount = 0;
         nextApeSound = Time.time + Random.Range(10, 20);
         for (int i = 0; i < transform.childCount; i++)
             if (transform.GetChild(i).name.Contains("Pos"))
@@ -61,11 +64,13 @@ public class Player : MonoBehaviour
     private void SpawnMonkey()
     {
         // spawns a monkey
-        Transform pos = spawnPositions[Random.Range(0, spawnPositions.Count)];
+        Transform pos = spawnPositions[index];
         Instantiate(monkey, pos.position, Quaternion.identity, transform);
 
         Vector3 newPos = pos.position;
-        newPos.x -= 3;
+        newPos.x -= 1.5f;
+
+        index = (index + 1) % spawnPositions.Count;
         pos.position = newPos;
     }
 }

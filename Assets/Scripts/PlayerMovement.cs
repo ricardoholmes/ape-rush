@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //transform.position += new Vector3(0, 0, -Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
+        rigidbody.velocity = Input.GetAxisRaw("Horizontal") * horizontalForce * Vector3.back;
 
         distanceTravelledText.text = $"{Mathf.RoundToInt(distanceTravelled / 10)}m";
         animator.speed = Mathf.Clamp(currentSpeed / 50, 1f, float.PositiveInfinity);
@@ -53,8 +54,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        rigidbody.velocity = Input.GetAxisRaw("Horizontal") * horizontalForce * Vector3.back;
-
         float previousX = transform.position.x;
         //rigidbody.AddForce(Vector3.right * currentSpeed);
         transform.position += Vector3.right * currentSpeed * Time.fixedDeltaTime;

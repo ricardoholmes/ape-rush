@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cages : MonoBehaviour
+public class Cage : MonoBehaviour
 {
     private void OnTriggerEnter(Collider collider)
     {
