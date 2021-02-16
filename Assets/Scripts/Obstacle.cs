@@ -4,5 +4,14 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public float mass = 1f;
+    public int mass = 1;
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            Player.monkeyCount -= mass;
+            Destroy(gameObject);
+        }
+    }
 }
