@@ -834,7 +834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96f012ffd953c74d8e09e6db11bdae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 543450653583438091}
   maxSpeed: 42
   delay: 2
   distanceText: {fileID: 1978555211}
@@ -1030,10 +1029,6 @@ PrefabInstance:
     - target: {fileID: 429818839810106607, guid: d1b534f8a638cb34ca465530b4f9a917, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 663836900647368677, guid: d1b534f8a638cb34ca465530b4f9a917, type: 3}
-      propertyPath: maxSpeed
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 663836900647368677, guid: d1b534f8a638cb34ca465530b4f9a917, type: 3}
       propertyPath: speedText
