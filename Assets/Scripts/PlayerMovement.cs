@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
         distanceTravelled.text = $"{Mathf.RoundToInt(transform.position.x / 10)}m";
 
-        animator.speed = Mathf.Clamp(currentSpeed / 2, 1f, float.PositiveInfinity);
+        animator.speed = Mathf.Clamp(currentSpeed, 1f, float.PositiveInfinity);
     }
 
     // Update is called once per frame
