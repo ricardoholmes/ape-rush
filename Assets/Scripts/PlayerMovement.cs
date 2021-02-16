@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 10f;
     float currentSpeed;
     public static float acceleration = 0.5f;
+    public float deceleration = 1f;
 
     public static bool isBoosting = false;
     public static float boostAmount;
@@ -64,16 +65,21 @@ public class PlayerMovement : MonoBehaviour
             isBoosting = false;
         }
 
-        if (!isBoosting)
+        if (!isBoosting && currentSpeed > maxSpeed)
         {
+            // if is slowing down
+            currentSpeed = Mathf.Clamp(currentSpeed - deceleration * Time.fixedDeltaTime, maxSpeed, float.PositiveInfinity);
+        }
+        else if (!isBoosting)
+        {
+            // if isnt boosting
             currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
             //currentSpeed = currentSpeed + acceleration * Time.fixedDeltaTime;
         }
         else
         {
-            // It never enters this else. maybe because isBoosting is static
+            // if is boosting
             currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount);
-            Debug.Log($"{currentSpeed} / {maxSpeed} * {boostAmount}");
         }
 
         speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (10 * Time.deltaTime))} kph";
