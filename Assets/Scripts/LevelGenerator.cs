@@ -47,6 +47,7 @@ public class LevelGenerator : MonoBehaviour
         
         Tsunami.tsunami.position += moveVector;
         Player.player.position += moveVector;
+        Camera.main.transform.position += moveVector;
 
         for (int i = 0; i < transform.childCount; i++)
             transform.GetChild(i).position += moveVector;
