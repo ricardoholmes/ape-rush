@@ -67,21 +67,21 @@ public class PlayerMovement : MonoBehaviour
         if (!isBoosting && currentSpeed > maxSpeed)
         {
             // if is slowing down
-            currentSpeed = Mathf.Clamp(currentSpeed - deceleration * Time.fixedDeltaTime, maxSpeed, float.PositiveInfinity);
+            currentSpeed = Mathf.Clamp(currentSpeed - deceleration * Time.fixedDeltaTime, maxSpeed + 1 * Player.monkeyCount, float.PositiveInfinity);
         }
         else if (!isBoosting)
         {
             // if isnt boosting
-            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
+            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed + 1 * Player.monkeyCount);
             //currentSpeed = currentSpeed + acceleration * Time.fixedDeltaTime;
         }
         else
         {
             // if is boosting
-            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount);
+            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount + 1 * Player.monkeyCount);
         }
 
-        speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (Time.deltaTime))} kph";
+        speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (Time.fixedDeltaTime))} kph";
     }
 
     void OnTriggerEnter(Collider collider)

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public GameObject monkey;
     private int index;
 
-    public static int monkeyCount = 0;
+    public static int monkeyCount;
     public static Transform player;
 
     private float nextApeSound;
@@ -33,6 +33,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            monkeyCount++;
+        }
+
         if (Time.time > nextApeSound)
         {
             audioSource.Play();
@@ -43,6 +48,11 @@ public class Player : MonoBehaviour
         {
             for (int i = 0; i < monkeyCount - MonkeyChildCount(); i++)
                 SpawnMonkey();
+        }
+        else if (MonkeyChildCount() > monkeyCount)
+        {
+            for (int i = 0; i < MonkeyChildCount() - monkeyCount; i++)
+                Destroy(transform.GetChild(transform.childCount - 1).gameObject);
         }
     }
 
