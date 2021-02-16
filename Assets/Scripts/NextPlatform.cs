@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class nextPlatform : MonoBehaviour
+public class NextPlatform : MonoBehaviour
 {
     void Update()
     {
