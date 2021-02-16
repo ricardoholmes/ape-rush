@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class Player : MonoBehaviour
             for (int i = 0; i < monkeyCount - transform.childCount; i++)
                 SpawnMonkey();
         }
+    }
+    public static void Die()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     void SpawnMonkey()

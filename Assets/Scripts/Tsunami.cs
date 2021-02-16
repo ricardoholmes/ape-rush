@@ -33,6 +33,11 @@ public class Tsunami : MonoBehaviour
     void Update()
     {
         distanceText.text = $"{Mathf.RoundToInt((player.position.x - transform.position.x) / 10)}m";
+
+        if (player.position.x <= transform.position.x)
+        {
+            Player.Die();
+        }
     }
 
     void FixedUpdate()
@@ -43,13 +48,5 @@ public class Tsunami : MonoBehaviour
             currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
         }
         // GetComponent<Rigidbody>().AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
-    }
-
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.CompareTag("Player"))
-        {
-            collider.GetComponent<PlayerMovement>().Die();
-        }
     }
 }
