@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Cages : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider collider)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collider.CompareTag("Player"))
+        {
+            PlayerMovement.monkeCount++;
+            Destroy(gameObject);
+        }
     }
 }
