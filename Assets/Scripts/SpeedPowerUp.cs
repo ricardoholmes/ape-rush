@@ -13,6 +13,7 @@ public class SpeedPowerUp : MonoBehaviour
         {
             if (!PlayerMovement.isBoosting ^ boost >= PlayerMovement.boostAmount)
             {
+                Debug.Log("BOOST");
                 PlayerMovement.isBoosting = true;
                 PlayerMovement.boostAmount = boost;
                 PlayerMovement.stopBoostingTime = Time.time + time;
