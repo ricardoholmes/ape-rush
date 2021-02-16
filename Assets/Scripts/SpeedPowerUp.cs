@@ -11,9 +11,8 @@ public class SpeedPowerUp : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            if (!PlayerMovement.isBoosting ^ boost >= PlayerMovement.boostAmount)
+            if (!PlayerMovement.isBoosting || boost >= PlayerMovement.boostAmount)
             {
-                Debug.Log("BOOST");
                 PlayerMovement.isBoosting = true;
                 PlayerMovement.boostAmount = boost;
                 PlayerMovement.stopBoostingTime = Time.time + time;

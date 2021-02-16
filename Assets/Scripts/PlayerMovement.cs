@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
         distanceTravelled.text = $"{Mathf.RoundToInt(transform.position.x / 10)}m";
 
-        animator.speed = Mathf.Clamp(currentSpeed / 2, 0.5f, float.PositiveInfinity);
+        animator.speed = Mathf.Clamp(currentSpeed / 2, 1f, float.PositiveInfinity);
     }
 
     // Update is called once per frame
@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // It never enters this else. maybe because isBoosting is static
             currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount);
+            Debug.Log($"{currentSpeed} / {maxSpeed} * {boostAmount}");
         }
 
         speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (10 * Time.deltaTime))} kph";
