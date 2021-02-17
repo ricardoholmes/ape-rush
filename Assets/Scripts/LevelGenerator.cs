@@ -67,18 +67,25 @@ public class LevelGenerator : MonoBehaviour
 
         GameObject[] biomeObjects = obstacles[currentBiome].objects;
         List<Transform> obstaclesList = new List<Transform>();
-        for (int i = 0; i < newLevelTransform.childCount; i++)
+        for (int i = newLevelTransform.childCount-1; i >= 0; i--)
         {
-            if (transform.GetChild(i).CompareTag("Obstacle"))
+            if (newLevelTransform.GetChild(i).CompareTag("Obstacle"))
             {
-                Transform obstacle = transform.GetChild(i);
-                obstaclesList.Add(Instantiate(biomeObjects[Random.Range(0, biomeObjects.Length)], obstacle.position, Quaternion.identity).transform);
-                Destroy(obstacle.gameObject);
+                obstaclesList.Add(newLevelTransform.GetChild(i));
             }
         }
 
         foreach (Transform i in obstaclesList)
-            i.parent = newLevelTransform;
+        {
+            Transform newObstacle = Instantiate(biomeObjects[Random.Range(0, biomeObjects.Length)], i.position, Quaternion.identity, newLevelTransform).transform;
+            Vector3 newScale = newObstacle.localScale;
+            newScale.x /= newLevelTransform.localScale.x;
+            newScale.y /= newLevelTransform.localScale.y;
+            newScale.z /= newLevelTransform.localScale.z;
+            newObstacle.localScale = newScale;
+
+            Destroy(i.gameObject);
+        }
 
         newLevelTransform.GetComponent<Renderer>().material = biomePlaneMaterials[currentBiome];
         biomeLengthRemaining--;
