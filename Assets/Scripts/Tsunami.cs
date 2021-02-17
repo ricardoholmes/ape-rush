@@ -6,11 +6,11 @@ using TMPro;
 public class Tsunami : MonoBehaviour
 {
     public static Transform tsunami;
+    public Transform player;
 
-    private Transform player;
     private float acceleration;
+    private float maxSpeed;
 
-    public float maxSpeed;
     public float delay = 1f;
     private float currentSpeed = 0;
 
@@ -20,7 +20,6 @@ public class Tsunami : MonoBehaviour
     private void Awake()
     {
         startTime = Time.time + delay;
-        player = Player.player;
     }
 
     private void Start()
@@ -33,11 +32,6 @@ public class Tsunami : MonoBehaviour
     void Update()
     {
         distanceText.text = $"{Mathf.RoundToInt((player.position.x - transform.position.x) / 10)}m";
-
-        if (player.position.x <= transform.position.x)
-        {
-            Player.Die();
-        }
     }
 
     void FixedUpdate()
@@ -47,6 +41,15 @@ public class Tsunami : MonoBehaviour
             transform.position += Vector3.right * currentSpeed * Time.fixedDeltaTime;
             currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed);
         }
-        // GetComponent<Rigidbody>().AddForce(Vector3.right * acceleration, ForceMode.Acceleration);
+    }
+
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            //Player.Die();
+            Debug.Log("DIE");
+        }
     }
 }
