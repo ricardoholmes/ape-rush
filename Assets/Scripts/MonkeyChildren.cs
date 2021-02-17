@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonkeyChildren : MonoBehaviour
 {
+    [HideInInspector]
     public int posIndex;
     /*
     private float horizontalForce;
