@@ -7,7 +7,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private GameObject[] maps;
 
-    public List<List<GameObject>> obstacles;
+    public List<GameObject[]> obstacles;
 
     public List<Material> biomePlaneMaterials;
     int currentBiome;
@@ -69,7 +69,7 @@ public class LevelGenerator : MonoBehaviour
             if (transform.GetChild(i).CompareTag("Obstacle"))
             {
                 Transform obstacle = transform.GetChild(i);
-                Instantiate(obstacles[currentBiome][Random.Range(0, obstacles.Count)], obstacle);
+                Instantiate(obstacles[currentBiome][Random.Range(0, obstacles[currentBiome].Length)], obstacle);
             }
         }
 
