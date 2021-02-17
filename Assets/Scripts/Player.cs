@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
     {
         // spawns a monkey
         Transform pos = spawnPositions[index];
-        GameObject monkeyChild = Instantiate(monkey, pos.position, Quaternion.identity, transform);
+        GameObject monkeyChild = Instantiate(monkey, pos.position, transform.rotation, transform);
         monkeyChild.GetComponent<MonkeyChildren>().posIndex = index;
 
         pos.position -= offset;
