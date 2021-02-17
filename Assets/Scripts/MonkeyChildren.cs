@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonkeyChildren : MonoBehaviour
 {
+    public int posIndex;
     /*
     private float horizontalForce;
     new Rigidbody rigidbody;

@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public GameObject monkey;
     private int index;
 
+    Vector3 offset = new Vector3(1.5f, 0, 0);
+
     public static int monkeyCount;
     public static Transform player;
 
@@ -52,7 +54,7 @@ public class Player : MonoBehaviour
         else if (MonkeyChildCount() > monkeyCount)
         {
             for (int i = 0; i < MonkeyChildCount() - monkeyCount; i++)
-                Destroy(transform.GetChild(transform.childCount - 1).gameObject);
+                KillMonkey(transform.GetChild(transform.childCount - 1).gameObject);
         }
     }
 
@@ -75,12 +77,17 @@ public class Player : MonoBehaviour
     {
         // spawns a monkey
         Transform pos = spawnPositions[index];
-        Instantiate(monkey, pos.position, Quaternion.identity, transform);
+        GameObject monkeyChild = Instantiate(monkey, pos.position, Quaternion.identity, transform);
+        monkeyChild.GetComponent<MonkeyChildren>().posIndex = index;
 
-        Vector3 newPos = pos.position;
-        newPos.x -= 1.5f;
-
+        pos.position -= offset;
         index = (index + 1) % spawnPositions.Count;
-        pos.position = newPos;
+    }
+
+    private void KillMonkey(GameObject monkey)
+    {
+        Transform pos = spawnPositions[monkey.GetComponent<MonkeyChildren>().posIndex];
+        pos.position += offset;
+        Destroy(monkey);
     }
 }
