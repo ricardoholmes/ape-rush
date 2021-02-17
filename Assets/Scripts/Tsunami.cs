@@ -7,10 +7,10 @@ using TMPro;
 public class Tsunami : MonoBehaviour
 {
     public static Transform tsunami;
-    private Transform player;
+    public Transform player;
 
-    private Animator animator;
-    private bool isDead;
+    public Animator fadeAnimator;
+    public static bool playerDead;
 
     private float acceleration;
     private float maxSpeed;
@@ -23,22 +23,20 @@ public class Tsunami : MonoBehaviour
     private float startTime;
     private void Awake()
     {
-        isDead = false;
-        player = Player.player;
+        playerDead = false;
         startTime = Time.time + delay;
     }
 
     private void Start()
     {
         tsunami = transform;
-        animator = GetComponent<Animator>();
         maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
         acceleration = player.GetComponent<PlayerMovement>().acceleration * 1.1f;
     }
 
     void Update()
     {
-        if (!isDead)
+        if (!playerDead)
         {
             distanceText.text = $"{Mathf.RoundToInt((player.position.x - transform.position.x) / 10)}m";
         }
@@ -53,9 +51,9 @@ public class Tsunami : MonoBehaviour
         }
     }
 
-    IEnumerator FloatAway()
+    IEnumerator FadeOut()
     {
-        animator.SetTrigger("die");
+        fadeAnimator.SetTrigger("FadeOut");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("MainMenu");
     }
@@ -65,9 +63,10 @@ public class Tsunami : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             CameraMovement.stop = true;
-            isDead = true;
+            playerDead = true;
+            transform.GetChild(0).gameObject.SetActive(true);
             Destroy(player.gameObject);
-            StartCoroutine(FloatAway());
+            StartCoroutine(FadeOut());
         }
     }
 }

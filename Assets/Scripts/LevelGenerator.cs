@@ -29,14 +29,17 @@ public class LevelGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(player.position, lastEndPosition) < triggerDistance)
+        if (!Tsunami.playerDead)
         {
-            SpawnLevel();
-        }
+            if (Vector3.Distance(player.position, lastEndPosition) < triggerDistance)
+            {
+                SpawnLevel();
+            }
 
-        if (lastEndPosition.x >= 1000)
-        {
-            MoveBack();
+            if (lastEndPosition.x >= 1000)
+            {
+                MoveBack();
+            }
         }
     }
 
