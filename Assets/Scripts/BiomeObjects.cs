@@ -6,5 +6,5 @@ using UnityEngine;
 public class BiomeObjects
 {
     [SerializeField]
-    public GameObject[] objects { get; set; }
+    public GameObject[] objects;
 }

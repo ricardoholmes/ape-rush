@@ -7,9 +7,9 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private GameObject[] maps;
 
+    public List<Material> biomePlaneMaterials;
     public List<BiomeObjects> obstacles;
 
-    public List<Material> biomePlaneMaterials;
     int currentBiome;
     int biomeLengthRemaining;
     public int minBiomeLength;
@@ -17,6 +17,7 @@ public class LevelGenerator : MonoBehaviour
 
     private readonly float triggerDistance = 300f;
     private Vector3 lastEndPosition;
+
     private void Awake()
     {
         // reset biome and biome length remaining
