@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964134, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657886, g: 0.49641377, b: 0.57481873, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -340,6 +340,10 @@ PrefabInstance:
     - target: {fileID: 8241679500460303830, guid: 432fb8626c278334e9de12be487e5237, type: 3}
       propertyPath: m_Name
       value: Tsunami
+      objectReference: {fileID: 0}
+    - target: {fileID: 8241679500460303830, guid: 432fb8626c278334e9de12be487e5237, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8731216864664780652, guid: 432fb8626c278334e9de12be487e5237, type: 3}
       propertyPath: m_RootOrder
@@ -655,8 +659,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 17a551e18deda254b80811c78c0877f4, type: 2}
   - {fileID: 2100000, guid: 6929728e8f232e94ca28188d2212ed32, type: 2}
   - {fileID: 2100000, guid: 28b5b73af983a30439e74e85abd2b361, type: 2}
-  minBiomeLength: 15
-  maxBiomeLength: 26
+  minBiomeLength: 5
+  maxBiomeLength: 10
 --- !u!4 &832646245
 Transform:
   m_ObjectHideFlags: 0

@@ -60,7 +60,7 @@ public class LevelGenerator : MonoBehaviour
     private void SpawnLevel()
     {
         Transform newLevelTransform = Instantiate(maps[Random.Range(0, maps.Length)].transform, lastEndPosition, Quaternion.identity, transform);
-        lastEndPosition = newLevelTransform.Find("EndPosition").position + new Vector3(95, 0, 0);
+        lastEndPosition = newLevelTransform.Find("EndPosition").position + new Vector3(95, 0.001f, 0);
 
         newLevelTransform.GetComponent<Renderer>().material = biomePlaneMaterials[currentBiome];
         biomeLengthRemaining--;
