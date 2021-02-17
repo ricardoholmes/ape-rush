@@ -66,14 +66,19 @@ public class LevelGenerator : MonoBehaviour
         lastEndPosition = newLevelTransform.Find("EndPosition").position + new Vector3(95, 0.001f, 0);
 
         GameObject[] biomeObjects = obstacles[currentBiome].objects;
+        List<Transform> obstaclesList = new List<Transform>();
         for (int i = 0; i < newLevelTransform.childCount; i++)
         {
             if (transform.GetChild(i).CompareTag("Obstacle"))
             {
                 Transform obstacle = transform.GetChild(i);
-                Instantiate(biomeObjects[Random.Range(0, biomeObjects.Length)], obstacle);
+                obstaclesList.Add(Instantiate(biomeObjects[Random.Range(0, biomeObjects.Length)], obstacle.position, Quaternion.identity).transform);
+                Destroy(obstacle.gameObject);
             }
         }
+
+        foreach (Transform i in obstaclesList)
+            i.parent = newLevelTransform;
 
         newLevelTransform.GetComponent<Renderer>().material = biomePlaneMaterials[currentBiome];
         biomeLengthRemaining--;
