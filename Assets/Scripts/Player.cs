@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -56,11 +55,6 @@ public class Player : MonoBehaviour
             for (int i = 0; i < MonkeyChildCount() - monkeyCount; i++)
                 KillMonkey(transform.GetChild(transform.childCount - (i + 1)).gameObject);
         }
-    }
-
-    public static void Die()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 
     public int MonkeyChildCount()
