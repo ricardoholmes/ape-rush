@@ -20,12 +20,12 @@ public class Tsunami : MonoBehaviour
     private void Awake()
     {
         startTime = Time.time + delay;
+        player = Player.player;
     }
 
     private void Start()
     {
         tsunami = transform;
-        player = Player.player;
         maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
         acceleration = player.GetComponent<PlayerMovement>().acceleration * 1.1f;
     }
