@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         else if (MonkeyChildCount() > monkeyCount)
         {
             for (int i = 0; i < MonkeyChildCount() - monkeyCount; i++)
-                KillMonkey(transform.GetChild(transform.childCount - 1).gameObject);
+                KillMonkey(transform.GetChild(transform.childCount - (i+1)).gameObject);
         }
     }
 
