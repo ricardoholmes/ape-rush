@@ -95,7 +95,7 @@ public class LevelGenerator : MonoBehaviour
             Destroy(i.gameObject);
         }
 
-        newLevelTransform.GetComponent<Renderer>().material = biomes[currentBiome].floorMaterial;
+        newLevelTransform.GetChild(0).GetComponent<Renderer>().material = biomes[currentBiome].floorMaterial;
         biomeLengthRemaining--;
         if (biomeLengthRemaining == 0)
         {
