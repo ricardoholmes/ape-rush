@@ -11,6 +11,8 @@ public class Tsunami : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public float maxHearingDistance = 100f;
+
     public Animator fadeAnimator;
     public static bool playerDead;
 
@@ -49,6 +51,7 @@ public class Tsunami : MonoBehaviour
     {
         if (!playerDead)
         {
+            audioSource.volume = 0.1f * Mathf.Clamp(1 - ((player.position.x - transform.position.x) / maxHearingDistance), 0.1f, 1);
             distanceText.text = $"{Mathf.RoundToInt((player.position.x - transform.position.x) / 10)}m";
         }
     }
@@ -65,19 +68,19 @@ public class Tsunami : MonoBehaviour
             {
                 maxSpeed = playerSpeed;
                 acceleration = playerAcceleration;
-                audioSource.Play();
+                //audioSource.Play();
                 firstHit = false;
             }
             else if (distance <= 2f && firstHit)
             {
                 maxSpeed = playerSpeed * 1.1f;
                 acceleration = playerAcceleration * 1.1f;
-                audioSource.Play();
+                //audioSource.Play();
             }
             else if (distance >= 3f)
             {
-                if (!firstHit)
-                    audioSource.Stop();
+                //if (!firstHit)
+                //    audioSource.Stop();
                 firstHit = true;
 
                 if (maxSpeed < initialMaxSpeed)
