@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
             else
             {
-                monkeyCount = Mathf.Clamp(Mathf.FloorToInt((3 * monkeyCount) / 4), 1, int.MaxValue);
+                monkeyCount = Mathf.Clamp(Mathf.FloorToInt(monkeyCount * 3 / 4), 1, int.MaxValue);
             }
 
             Destroy(collider.gameObject);
