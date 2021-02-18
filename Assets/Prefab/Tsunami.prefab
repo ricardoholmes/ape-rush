@@ -48,7 +48,7 @@ Transform:
   m_GameObject: {fileID: 8241679500460303830}
   m_LocalRotation: {x: 0.5010069, y: 0.4989911, z: -0.5010069, w: -0.4989911}
   m_LocalPosition: {x: -14.761724, y: 9.422021, z: 21.690197}
-  m_LocalScale: {x: 0.333337, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1.41, z: 1}
   m_Children:
   - {fileID: 6093074774164878441}
   m_Father: {fileID: 0}
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1061958193503452757, guid: d1b534f8a638cb34ca465530b4f9a917, type: 3}
   fadeAnimator: {fileID: 0}
+  acceleration: 0
   delay: 1
   distanceText: {fileID: 0}
 --- !u!1001 &5981987860994118530
