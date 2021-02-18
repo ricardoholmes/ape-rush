@@ -13,15 +13,9 @@ public class Player : MonoBehaviour
     public static int monkeyCount;
     public static Transform player;
 
-    private bool newBiome;
-    private string lastBiome;
-
-    private AudioSource audioSource;
-
     private void Awake()
     {
         index = 0;
-        monkeyCount = 0;
         for (int i = 0; i < transform.childCount; i++)
             if (transform.GetChild(i).name.Contains("Pos"))
                 spawnPositions.Add(transform.GetChild(i));
@@ -30,7 +24,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         player = transform;
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()

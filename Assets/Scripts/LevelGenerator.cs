@@ -18,13 +18,18 @@ public class LevelGenerator : MonoBehaviour
     public int minBiomeLength;
     public int maxBiomeLength;
 
+    float nextBiomeStart;
+    bool biomeStarted;
+
     private readonly float triggerDistance = 300f;
     private Vector3 lastEndPosition;
 
     private void Awake()
     {
         // reset biome and biome length remaining
+        nextBiomeStart = 0;
         currentBiome = 0;
+        biomeStarted = false;
         biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
     }
 
@@ -37,7 +42,7 @@ public class LevelGenerator : MonoBehaviour
     {
         if (!Tsunami.playerDead)
         {
-            if (Vector3.Distance(player.position, lastEndPosition) < triggerDistance)
+            if (lastEndPosition.x - player.position.x < triggerDistance)
             {
                 SpawnLevel();
             }
@@ -45,6 +50,12 @@ public class LevelGenerator : MonoBehaviour
             if (lastEndPosition.x >= 1000)
             {
                 MoveBack();
+            }
+
+            if (player.position.x >= nextBiomeStart && !biomeStarted)
+            {
+                player.GetComponent<AudioSource>().clip = biomes[currentBiome].steppingSound;
+                biomeStarted = true;
             }
         }
     }
@@ -61,6 +72,7 @@ public class LevelGenerator : MonoBehaviour
             transform.GetChild(i).position += moveVector;
 
         lastEndPosition += moveVector;
+        nextBiomeStart -= moveVector.magnitude;
     }
 
     private void SpawnLevel()
@@ -99,6 +111,7 @@ public class LevelGenerator : MonoBehaviour
         biomeLengthRemaining--;
         if (biomeLengthRemaining == 0)
         {
+            nextBiomeStart = newLevelTransform.Find("EndPosition").position.x;
             List<int> possibleBiomes = new List<int>();
             for (int i = 1; i < biomes.Count; i++)
                 if (i != currentBiome)

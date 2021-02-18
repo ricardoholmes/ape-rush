@@ -50,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
         animator.speed = Mathf.Clamp(currentSpeed / 50, 1f, float.PositiveInfinity);
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
         float previousX = transform.position.x;
