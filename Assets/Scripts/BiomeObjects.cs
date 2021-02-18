@@ -9,6 +9,9 @@ public class BiomeObjects
     private string name;
 
     [SerializeField]
+    public AudioClip steppingSound;
+
+    [SerializeField]
     public Material floorMaterial;
 
     [SerializeField]
