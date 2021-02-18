@@ -9,10 +9,13 @@ public class Tsunami : MonoBehaviour
     public static Transform tsunami;
     public Transform player;
 
+    private AudioSource audioSource;
+
     public Animator fadeAnimator;
     public static bool playerDead;
 
-    public float acceleration;
+    public float maxSpeedAcceleration;
+    private float acceleration;
     private float initialAcceleration;
     private float maxSpeed;
     private float initialMaxSpeed;
@@ -24,6 +27,7 @@ public class Tsunami : MonoBehaviour
     public TextMeshProUGUI distanceText;
 
     private float startTime;
+
     private void Awake()
     {
         playerDead = false;
@@ -35,6 +39,8 @@ public class Tsunami : MonoBehaviour
         tsunami = transform;
         initialMaxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
         initialAcceleration = player.GetComponent<PlayerMovement>().acceleration * 1.1f;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -54,21 +60,21 @@ public class Tsunami : MonoBehaviour
             float playerSpeed = player.GetComponent<PlayerMovement>().currentSpeed;
             if (distance <= 1f && firstHit)
             {
+                audioSource.Play();
                 maxSpeed = initialMaxSpeed * 0.9f;
                 acceleration = playerAcceleration * 0.9f;
                 currentSpeed = playerSpeed;
                 firstHit = false;                
             }
-            else if (distance >= 30f)
-            {
-                maxSpeed = initialMaxSpeed * 1.5f;
-                acceleration = initialAcceleration * 1.1f;
-            }
             else if (distance >= 2f)
             {
+                if (!firstHit)
+                    audioSource.Stop();
+                firstHit = true;
+
+                initialMaxSpeed += maxSpeedAcceleration * Time.fixedDeltaTime;
                 acceleration = initialAcceleration;
                 maxSpeed = initialMaxSpeed;
-                firstHit = true;
             }
         }
 
