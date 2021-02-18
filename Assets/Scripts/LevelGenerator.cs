@@ -9,6 +9,10 @@ public class LevelGenerator : MonoBehaviour
 
     public List<BiomeObjects> biomes;
 
+    [Range(0, 1)]
+    public float cageProbability = 0.05f;
+    public GameObject cage;
+
     int currentBiome;
     int biomeLengthRemaining;
     public int minBiomeLength;
@@ -76,7 +80,12 @@ public class LevelGenerator : MonoBehaviour
 
         foreach (Transform i in obstaclesList)
         {
-            Transform newObstacle = Instantiate(biomeObjects[Random.Range(0, biomeObjects.Length)], i.position, Quaternion.identity, newLevelTransform).transform;
+            Transform newObstacle;
+            if (Random.value <= cageProbability)
+                newObstacle = Instantiate(cage, i.position, Quaternion.identity, newLevelTransform).transform;
+            else
+                newObstacle = Instantiate(biomeObjects[Random.Range(0, biomeObjects.Length)], i.position, Quaternion.identity, newLevelTransform).transform;
+
             Vector3 newScale = newObstacle.localScale;
             newScale.x /= newLevelTransform.localScale.x;
             newScale.y /= newLevelTransform.localScale.y;

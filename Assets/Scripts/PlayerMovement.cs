@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
 
     new Rigidbody rigidbody;
 
-    [Range(0.5f, 10f)]
     public float obstacleSlowCoefficient = 0.5f;
 
     private void Awake()
