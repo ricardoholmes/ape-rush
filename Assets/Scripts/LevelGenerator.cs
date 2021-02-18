@@ -7,8 +7,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private GameObject[] maps;
 
-    public List<Material> biomePlaneMaterials;
-    public List<BiomeObjects> obstacles;
+    public List<BiomeObjects> biomes;
 
     int currentBiome;
     int biomeLengthRemaining;
@@ -65,7 +64,7 @@ public class LevelGenerator : MonoBehaviour
         Transform newLevelTransform = Instantiate(maps[Random.Range(0, maps.Length)].transform, lastEndPosition, Quaternion.identity, transform);
         lastEndPosition = newLevelTransform.Find("EndPosition").position + new Vector3(95, 0.001f, 0);
 
-        GameObject[] biomeObjects = obstacles[currentBiome].objects;
+        GameObject[] biomeObjects = biomes[currentBiome].obstacles;
         List<Transform> obstaclesList = new List<Transform>();
         for (int i = newLevelTransform.childCount-1; i >= 0; i--)
         {
@@ -87,12 +86,12 @@ public class LevelGenerator : MonoBehaviour
             Destroy(i.gameObject);
         }
 
-        newLevelTransform.GetComponent<Renderer>().material = biomePlaneMaterials[currentBiome];
+        newLevelTransform.GetComponent<Renderer>().material = biomes[currentBiome].floorMaterial;
         biomeLengthRemaining--;
         if (biomeLengthRemaining == 0)
         {
             List<int> possibleBiomes = new List<int>();
-            for (int i = 1; i < biomePlaneMaterials.Count; i++)
+            for (int i = 1; i < biomes.Count; i++)
                 if (i != currentBiome)
                     possibleBiomes.Add(i);
 

@@ -6,5 +6,11 @@ using UnityEngine;
 public class BiomeObjects
 {
     [SerializeField]
-    public GameObject[] objects;
+    private string name;
+
+    [SerializeField]
+    public Material floorMaterial;
+
+    [SerializeField]
+    public GameObject[] obstacles;
 }
