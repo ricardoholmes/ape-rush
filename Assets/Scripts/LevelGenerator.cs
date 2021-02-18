@@ -70,7 +70,7 @@ public class LevelGenerator : MonoBehaviour
 
         GameObject[] biomeObjects = biomes[currentBiome].obstacles;
         List<Transform> obstaclesList = new List<Transform>();
-        for (int i = newLevelTransform.childCount-1; i >= 0; i--)
+        for (int i = 0; i < transform.childCount; i--)
         {
             if (newLevelTransform.GetChild(i).CompareTag("Obstacle"))
             {
