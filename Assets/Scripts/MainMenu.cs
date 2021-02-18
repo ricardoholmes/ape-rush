@@ -18,11 +18,6 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void PressButton()
-    {
-        GetComponent<AudioSource>().Play();
-    }
-
     public void ChangeVolume(string type, float volume)
     {
         volumeMixer.SetFloat(type, Mathf.Log10(volume) * 20);
