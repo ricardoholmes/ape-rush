@@ -17,8 +17,10 @@ public class Tsunami : MonoBehaviour
     public float maxSpeedAcceleration;
     private float acceleration;
     private float initialAcceleration;
+
     private float maxSpeed;
     private float initialMaxSpeed;
+
     private bool firstHit = true;
 
     public float delay = 1f;
@@ -72,9 +74,11 @@ public class Tsunami : MonoBehaviour
                     audioSource.Stop();
                 firstHit = true;
 
-                initialMaxSpeed += maxSpeedAcceleration * Time.fixedDeltaTime;
+                if (maxSpeed < initialMaxSpeed)
+                    maxSpeed = initialMaxSpeed;
+
+                maxSpeed += maxSpeedAcceleration * Time.fixedDeltaTime;
                 acceleration = initialAcceleration;
-                maxSpeed = initialMaxSpeed;
             }
         }
 
