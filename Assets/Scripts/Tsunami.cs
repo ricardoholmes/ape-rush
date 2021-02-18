@@ -63,8 +63,7 @@ public class Tsunami : MonoBehaviour
             if (distance <= 1f && firstHit)
             {
                 audioSource.Play();
-                //maxSpeed = initialMaxSpeed * 0.9f;
-                maxSpeed *= 0.9f;
+                maxSpeed = initialMaxSpeed * 0.9f;
                 acceleration = playerAcceleration * 0.9f;
                 firstHit = false;                
             }
