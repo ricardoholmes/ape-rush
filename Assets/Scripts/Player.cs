@@ -13,14 +13,15 @@ public class Player : MonoBehaviour
     public static int monkeyCount;
     public static Transform player;
 
-    private float nextApeSound;
+    private bool newBiome;
+    private string lastBiome;
+
     private AudioSource audioSource;
 
     private void Awake()
     {
         index = 0;
         monkeyCount = 0;
-        nextApeSound = Time.time + Random.Range(10, 20);
         for (int i = 0; i < transform.childCount; i++)
             if (transform.GetChild(i).name.Contains("Pos"))
                 spawnPositions.Add(transform.GetChild(i));
@@ -37,12 +38,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             monkeyCount++;
-        }
-
-        if (Time.time > nextApeSound)
-        {
-            audioSource.Play();
-            nextApeSound = Time.time + Random.Range(10, 20);
         }
 
         if (MonkeyChildCount() < monkeyCount)
