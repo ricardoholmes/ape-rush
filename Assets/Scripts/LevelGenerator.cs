@@ -72,7 +72,6 @@ public class LevelGenerator : MonoBehaviour
         List<Transform> obstaclesList = new List<Transform>();
         for (int i = 0; i < newLevelTransform.childCount; i++)
         {
-            Debug.Log(i);
             if (newLevelTransform.GetChild(i).CompareTag("Obstacle"))
             {
                 obstaclesList.Add(newLevelTransform.GetChild(i));
