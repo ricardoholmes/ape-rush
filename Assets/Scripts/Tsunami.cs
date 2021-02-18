@@ -60,14 +60,24 @@ public class Tsunami : MonoBehaviour
             float distance = (player.position.x - transform.position.x) / 10;
             float playerAcceleration = player.GetComponent<PlayerMovement>().acceleration;
             float playerSpeed = player.GetComponent<PlayerMovement>().currentSpeed;
+
             if (distance <= 1f && firstHit)
             {
+                maxSpeed = playerSpeed;
+                acceleration = playerAcceleration;
                 audioSource.Play();
-                maxSpeed = initialMaxSpeed * 0.9f;
-                acceleration = playerAcceleration * 0.9f;
-                firstHit = false;                
+                firstHit = false;
+                //maxSpeed = initialMaxSpeed * 0.7f;
+                //acceleration = playerAcceleration * 0.7f;
             }
-            else if (distance >= 2f)
+            else if (distance <= 2f && firstHit)
+            {
+                maxSpeed = playerSpeed * 1.1f;
+                acceleration = playerAcceleration * 1.1f;
+                audioSource.Play();
+                //firstHit = false;
+            }
+            else if (distance >= 3f)
             {
                 if (!firstHit)
                     audioSource.Stop();
