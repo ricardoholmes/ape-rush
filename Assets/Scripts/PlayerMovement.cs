@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float startSpeed = 1f;
     public float maxSpeed = 10f;
-    float currentSpeed;
+    public float currentSpeed;
     public float acceleration = 2f;
     public float deceleration = 1f;
     private float distanceTravelled;

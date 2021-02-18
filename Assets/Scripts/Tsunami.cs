@@ -13,7 +13,10 @@ public class Tsunami : MonoBehaviour
     public static bool playerDead;
 
     public float acceleration;
+    private float initialAcceleration;
     private float maxSpeed;
+    private float initialMaxSpeed;
+    private bool firstHit = true;
 
     public float delay = 1f;
     private float currentSpeed = 0;
@@ -30,8 +33,8 @@ public class Tsunami : MonoBehaviour
     private void Start()
     {
         tsunami = transform;
-        maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
-        acceleration = player.GetComponent<PlayerMovement>().acceleration * 1.1f;
+        initialMaxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
+        initialAcceleration = player.GetComponent<PlayerMovement>().acceleration * 1.1f;
     }
 
     void Update()
@@ -47,13 +50,28 @@ public class Tsunami : MonoBehaviour
         if (!playerDead)
         {
             float distance = (player.position.x - transform.position.x) / 10;
-            float playerMaxSpeed = player.GetComponent<PlayerMovement>().maxSpeed;
+            float playerAcceleration = player.GetComponent<PlayerMovement>().acceleration;
+            float playerSpeed = player.GetComponent<PlayerMovement>().currentSpeed;
             if (distance <= 1)
-                maxSpeed = playerMaxSpeed * 0.9f;
+            {
+                maxSpeed = initialMaxSpeed * 0.9f;
+                acceleration = playerAcceleration;
+                if (firstHit)
+                    currentSpeed = playerSpeed;
+                firstHit = false;
+            }
             else if (distance >= 30)
-                maxSpeed = playerMaxSpeed * 1.5f;
+            {
+                maxSpeed = initialMaxSpeed * 1.5f;
+                acceleration = initialAcceleration * 1.1f;
+            }
             else
-                maxSpeed = playerMaxSpeed * 1.1f;
+            {
+                acceleration = initialAcceleration;
+                maxSpeed = initialMaxSpeed;
+                firstHit = true;
+
+            }
         }
 
         if (Time.time > startTime)
