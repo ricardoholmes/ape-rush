@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964134, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657886, g: 0.49641377, b: 0.57481873, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -669,6 +669,7 @@ MonoBehaviour:
     obstacles:
     - {fileID: 1555462001968076646, guid: 235916f5c43936147959acd914a32c2c, type: 3}
     - {fileID: 810398509197867381, guid: eacd99b85ed05334490a1f800c6554d2, type: 3}
+    - {fileID: 5793984695791467545, guid: af800946f10cee049943b5eca7dc7e67, type: 3}
   - name: Forest
     steppingSound: {fileID: 0}
     floorMaterial: {fileID: 2100000, guid: 6929728e8f232e94ca28188d2212ed32, type: 2}
