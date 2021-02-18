@@ -643,11 +643,13 @@ MonoBehaviour:
   maps:
   - {fileID: 2725695303929897615, guid: 91105de018885604daafc1b27924d191, type: 3}
   - {fileID: 2725695303929897615, guid: 704ee492e4151a74fb9a590b89945bf3, type: 3}
+  cageProbability: 0.05
+  cage: {fileID: 1458603155516115177, guid: f8bfe33876e012c4a8aafbf441a4ffc1, type: 3}
   biomes:
   - name: Beach
     floorMaterial: {fileID: 2100000, guid: 17a551e18deda254b80811c78c0877f4, type: 2}
     obstacles:
-    - {fileID: 1458603155516115177, guid: f8bfe33876e012c4a8aafbf441a4ffc1, type: 3}
+    - {fileID: 1555462001968076646, guid: 235916f5c43936147959acd914a32c2c, type: 3}
   - name: Forest
     floorMaterial: {fileID: 2100000, guid: 6929728e8f232e94ca28188d2212ed32, type: 2}
     obstacles:
@@ -656,7 +658,7 @@ MonoBehaviour:
   - name: Rock
     floorMaterial: {fileID: 2100000, guid: 28b5b73af983a30439e74e85abd2b361, type: 2}
     obstacles:
-    - {fileID: 1458603155516115177, guid: f8bfe33876e012c4a8aafbf441a4ffc1, type: 3}
+    - {fileID: 1555462001968076646, guid: 235916f5c43936147959acd914a32c2c, type: 3}
   minBiomeLength: 5
   maxBiomeLength: 10
 --- !u!4 &832646245

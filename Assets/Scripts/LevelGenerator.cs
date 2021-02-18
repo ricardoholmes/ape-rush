@@ -7,11 +7,11 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private GameObject[] maps;
 
-    public List<BiomeObjects> biomes;
-
     [Range(0, 1)]
     public float cageProbability = 0.05f;
     public GameObject cage;
+
+    public List<BiomeObjects> biomes;
 
     int currentBiome;
     int biomeLengthRemaining;
