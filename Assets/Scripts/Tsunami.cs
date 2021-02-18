@@ -111,6 +111,7 @@ public class Tsunami : MonoBehaviour
             CameraMovement.stop = true;
             playerDead = true;
             transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).GetComponent<AudioSource>().Play();
             Destroy(player.gameObject);
             StartCoroutine(FadeOut());
         }
