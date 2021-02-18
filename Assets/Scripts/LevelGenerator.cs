@@ -35,7 +35,7 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        lastEndPosition = new Vector3(player.position.x, 0) + new Vector3(80, 0, 0);
+        lastEndPosition = new Vector3(player.position.x + 80, 0);
     }
 
     void Update()
