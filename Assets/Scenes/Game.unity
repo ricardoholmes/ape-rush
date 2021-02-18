@@ -1179,6 +1179,10 @@ PrefabInstance:
       propertyPath: distanceTravelledText
       value: 
       objectReference: {fileID: 1074113580}
+    - target: {fileID: 663836900647368677, guid: d1b534f8a638cb34ca465530b4f9a917, type: 3}
+      propertyPath: obstacleSlowCoefficient
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1061958193503452757, guid: d1b534f8a638cb34ca465530b4f9a917, type: 3}
       propertyPath: m_RootOrder
       value: 4
