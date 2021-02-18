@@ -9,7 +9,7 @@ public class SpeedPowerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Player") || collider.CompareTag("Monkey"))
         {
             if (!PlayerMovement.isBoosting || boost >= PlayerMovement.boostAmount)
             {
