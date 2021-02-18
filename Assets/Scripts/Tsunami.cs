@@ -14,7 +14,6 @@ public class Tsunami : MonoBehaviour
 
     public float acceleration;
     private float maxSpeed;
-    private float initialMaxSpeed;
 
     public float delay = 1f;
     private float currentSpeed = 0;
@@ -31,7 +30,7 @@ public class Tsunami : MonoBehaviour
     private void Start()
     {
         tsunami = transform;
-        initialMaxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
+        maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
         acceleration = player.GetComponent<PlayerMovement>().acceleration * 1.1f;
     }
 
@@ -45,15 +44,17 @@ public class Tsunami : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!playerDead && player.position.x - transform.position.x <= 10f)
+        if (!playerDead)
         {
-            maxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 0.9f;
+            float distance = (player.position.x - transform.position.x) / 10;
+            float playerMaxSpeed = player.GetComponent<PlayerMovement>().maxSpeed;
+            if (distance <= 1)
+                maxSpeed = playerMaxSpeed * 0.9f;
+            else if (distance >= 30)
+                maxSpeed = playerMaxSpeed * 1.5f;
+            else
+                maxSpeed = playerMaxSpeed * 1.1f;
         }
-        else
-        {
-            maxSpeed = initialMaxSpeed;
-        }
-
 
         if (Time.time > startTime)
         {
