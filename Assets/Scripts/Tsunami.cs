@@ -77,7 +77,9 @@ public class Tsunami : MonoBehaviour
                 if (maxSpeed < initialMaxSpeed)
                     maxSpeed = initialMaxSpeed;
 
-                maxSpeed += maxSpeedAcceleration * Time.fixedDeltaTime;
+                if (distance > 5f)
+                    maxSpeed += maxSpeedAcceleration * Time.fixedDeltaTime;
+
                 acceleration = initialAcceleration;
             }
         }
