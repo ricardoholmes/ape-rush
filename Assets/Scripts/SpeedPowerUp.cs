@@ -18,12 +18,14 @@ public class SpeedPowerUp : MonoBehaviour
                 PlayerMovement.isBoosting = true;
                 PlayerMovement.boostAmount = boost;
                 PlayerMovement.stopBoostingTime = Time.time + time;
-                Destroy(gameObject);
             }
             else
             {
                 PlayerMovement.stopBoostingTime = Time.time + (PlayerMovement.stopBoostingTime - Time.time) * boost;
             }
+
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
         }
     }
 }
