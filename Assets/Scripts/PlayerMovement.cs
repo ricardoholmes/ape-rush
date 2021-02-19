@@ -14,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public float deceleration = 1f;
     private float distanceTravelled;
 
-    public float rotationAngle;
-    public float rotationSpeed;
+    public float rotationAngle = 45f;
+    public float rotationSpeed = 10f;
 
     public static bool isBoosting = false;
     public static float boostAmount;
