@@ -10,6 +10,7 @@ public class Obstacle : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
+            //Player.monkeyCount Mathf.Clamp(Mathf.FloorToInt(monkeyCount * 3 / 4), 1, int.MaxValue);
             Player.monkeyCount = Mathf.Clamp(Player.monkeyCount - mass, 0, int.MaxValue);
             Destroy(gameObject);
         }

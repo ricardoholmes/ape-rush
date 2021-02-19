@@ -94,10 +94,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (difference >= 0) { }
 
-            else
-            {
-                monkeyCount = Mathf.Clamp(Mathf.FloorToInt(monkeyCount * 3 / 4), 1, int.MaxValue);
-            }
+            else { }
 
             Destroy(collider.gameObject);
             currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeyCount, 0, maxSpeed);
