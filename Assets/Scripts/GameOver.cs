@@ -9,7 +9,7 @@ public class GameOver : MonoBehaviour
     private void Start()
     {
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Score\n{PlayerPrefs.GetString("Score")}";
-        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Highest Score\n{PlayerPrefs.GetString("HighestScore")}";
+        transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = $"Highest Score\n{PlayerPrefs.GetString("HighestScore")}";
     }
 
     public void Play()

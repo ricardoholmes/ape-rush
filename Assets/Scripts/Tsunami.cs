@@ -31,6 +31,7 @@ public class Tsunami : MonoBehaviour
     private float currentSpeed = 0;
 
     public TextMeshProUGUI distanceText;
+    public TextMeshProUGUI distanceTravelled;
 
     private float startTime;
 
@@ -112,9 +113,10 @@ public class Tsunami : MonoBehaviour
             CameraMovement.stop = true;
             playerDead = true;
             transform.GetChild(0).GetComponent<AudioSource>().Play();
-            PlayerPrefs.SetString("Score", distanceText.text);
-            if (int.Parse(PlayerPrefs.GetString("HighestScore", "0m").Split('m')[0]) < int.Parse(distanceText.text.Split('m')[0]))
-                PlayerPrefs.SetString("HighestScore", distanceText.text);
+            string distance = distanceTravelled.text;
+            PlayerPrefs.SetString("Score", distance);
+            if (int.Parse(PlayerPrefs.GetString("HighestScore", "0m").Split('m')[0]) < int.Parse(distance.Split('m')[0]))
+                PlayerPrefs.SetString("HighestScore", distance);
             PlayerPrefs.Save();
             Destroy(player.gameObject);
             StartCoroutine(FadeOut());
