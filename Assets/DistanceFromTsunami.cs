@@ -13,7 +13,7 @@ public class DistanceFromTsunami : MonoBehaviour
 
     void Update()
     {
-        if (int.Parse(textComponent.text.Split('m')[0]) <= 3)
+        if (int.Parse(textComponent.text.Split('m')[0]) <= 2)
         {
             textComponent.color = new Color32(255, 0, 0, 255);
 
