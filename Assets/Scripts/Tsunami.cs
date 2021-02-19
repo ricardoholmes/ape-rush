@@ -80,7 +80,7 @@ public class Tsunami : MonoBehaviour
                 firstHit = true;
 
                 if (distance > 5f)
-                    maxSpeed = Mathf.Clamp(maxSpeed + maxSpeedAcceleration * Time.fixedDeltaTime * distance / 5, initialMaxSpeed, playerSpeed * 1.3f);
+                    maxSpeed = Mathf.Clamp(maxSpeed + maxSpeedAcceleration * Time.fixedDeltaTime * distance, initialMaxSpeed, playerSpeed * 1.3f);
                 else
                     maxSpeed = initialMaxSpeed;
 
