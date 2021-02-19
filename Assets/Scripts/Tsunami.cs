@@ -101,7 +101,7 @@ public class Tsunami : MonoBehaviour
     IEnumerator FadeOut()
     {
         fadeAnimator.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene("GameOver");
     }
 
@@ -112,6 +112,10 @@ public class Tsunami : MonoBehaviour
             CameraMovement.stop = true;
             playerDead = true;
             transform.GetChild(0).GetComponent<AudioSource>().Play();
+            PlayerPrefs.SetString("Score", distanceText.text);
+            if (int.Parse(PlayerPrefs.GetString("HighestScore", "0m").Split('m')[0]) < int.Parse(distanceText.text.Split('m')[0]))
+                PlayerPrefs.SetString("HighestScore", distanceText.text);
+            PlayerPrefs.Save();
             Destroy(player.gameObject);
             StartCoroutine(FadeOut());
         }
