@@ -92,17 +92,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collider.CompareTag("Obstacle"))
         {
-            // +1 to account for player
             int monkeyCount = Player.monkeyCount + 1;
 
             float mass = collider.GetComponent<Obstacle>().mass;
-            float difference = monkeyCount - mass;
 
-            if (difference >= 0) { }
-
-            else { }
-
-            Destroy(collider.gameObject);
             currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeyCount, 0, maxSpeed);
         }
 
