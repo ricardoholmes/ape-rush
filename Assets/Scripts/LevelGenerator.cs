@@ -72,7 +72,7 @@ public class LevelGenerator : MonoBehaviour
             transform.GetChild(i).position += moveVector;
 
         lastEndPosition += moveVector;
-        nextBiomeStart -= moveVector.magnitude;
+        //nextBiomeStart -= moveVector.magnitude;
     }
 
     private void SpawnLevel()
@@ -111,7 +111,7 @@ public class LevelGenerator : MonoBehaviour
         biomeLengthRemaining--;
         if (biomeLengthRemaining == 0)
         {
-            nextBiomeStart = newLevelTransform.Find("EndPosition").position.x;
+            //nextBiomeStart = newLevelTransform.Find("EndPosition").position.x;
             List<int> possibleBiomes = new List<int>();
             for (int i = 1; i < biomes.Count; i++)
                 if (i != currentBiome)
