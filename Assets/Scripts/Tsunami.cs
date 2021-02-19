@@ -104,7 +104,7 @@ public class Tsunami : MonoBehaviour
     {
         fadeAnimator.SetTrigger("FadeOut");
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("GameOver");
     }
 
     void OnTriggerEnter(Collider collider)
