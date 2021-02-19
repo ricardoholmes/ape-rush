@@ -54,7 +54,7 @@ public class Tsunami : MonoBehaviour
     {
         if (!playerDead)
         {
-            audioSource.volume = Mathf.Clamp(1 - ((player.position.x - transform.position.x) / maxHearingDistance), 0.01f, 0.05f);
+            audioSource.volume = Mathf.Clamp(1 - ((player.position.x - transform.position.x) / maxHearingDistance), 0.01f, 0.02f);
             distanceText.text = $"{Mathf.RoundToInt((player.position.x - transform.position.x) / 10)}m";
         }
     }
@@ -111,8 +111,7 @@ public class Tsunami : MonoBehaviour
         {
             CameraMovement.stop = true;
             playerDead = true;
-            transform.GetChild(0).gameObject.SetActive(true);
-            transform.GetChild(1).GetComponent<AudioSource>().Play();
+            transform.GetChild(0).GetComponent<AudioSource>().Play();
             Destroy(player.gameObject);
             StartCoroutine(FadeOut());
         }
