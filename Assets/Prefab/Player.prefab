@@ -138,6 +138,8 @@ MonoBehaviour:
   currentSpeed: 0
   acceleration: 10
   deceleration: 1
+  rotationAngle: 0
+  rotationSpeed: 0
   horizontalForce: 35
   speedText: {fileID: 0}
   distanceTravelledText: {fileID: 0}
@@ -165,11 +167,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5098242400210294145, guid: aa73a0a28f0d3dd4e8af6d9aed110efd, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 42d74a15ed7931946aa3c0e575e02b49, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

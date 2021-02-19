@@ -52,11 +52,11 @@ public class LevelGenerator : MonoBehaviour
                 MoveBack();
             }
 
-            if (player.position.x >= nextBiomeStart && !biomeStarted)
-            {
-                player.GetComponent<AudioSource>().clip = biomes[currentBiome].steppingSound;
-                biomeStarted = true;
-            }
+            //if (player.position.x >= nextBiomeStart && !biomeStarted)
+            //{
+            //    player.GetComponent<AudioSource>().clip = biomes[currentBiome].steppingSound;
+            //    biomeStarted = true;
+            //}
         }
     }
 
