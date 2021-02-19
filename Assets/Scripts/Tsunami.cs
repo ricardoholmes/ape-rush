@@ -16,6 +16,8 @@ public class Tsunami : MonoBehaviour
     public Animator fadeAnimator;
     public static bool playerDead;
 
+    public static bool kill;
+
     public float maxSpeedAcceleration;
     private float acceleration;
     private float initialAcceleration;
@@ -34,6 +36,7 @@ public class Tsunami : MonoBehaviour
 
     private void Awake()
     {
+        kill = false;
         playerDead = false;
         startTime = Time.time + delay;
     }
@@ -64,18 +67,18 @@ public class Tsunami : MonoBehaviour
             float playerAcceleration = player.GetComponent<PlayerMovement>().acceleration;
             float playerSpeed = player.GetComponent<PlayerMovement>().currentSpeed;
 
-            if (distance <= 1f && firstHit)
+            if (distance <= 1f && firstHit && !kill)
             {
                 maxSpeed = playerSpeed;
                 acceleration = playerAcceleration;
                 firstHit = false;
             }
-            else if (distance <= 2f && firstHit)
+            else if (distance <= 2f && firstHit && !kill)
             {
                 maxSpeed = playerSpeed * 1.2f;
                 acceleration = playerAcceleration * 1.1f;
             }
-            else if (distance >= 3f)
+            else if (distance >= 3f || kill)
             {
                 firstHit = true;
 
