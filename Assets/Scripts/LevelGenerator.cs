@@ -18,8 +18,8 @@ public class LevelGenerator : MonoBehaviour
     public int minBiomeLength;
     public int maxBiomeLength;
 
-    float nextBiomeStart;
-    bool biomeStarted;
+    //float nextBiomeStart;
+    //bool biomeStarted;
 
     private readonly float triggerDistance = 300f;
     private Vector3 lastEndPosition;
@@ -27,9 +27,9 @@ public class LevelGenerator : MonoBehaviour
     private void Awake()
     {
         // reset biome and biome length remaining
-        nextBiomeStart = 0;
         currentBiome = 0;
-        biomeStarted = false;
+        //nextBiomeStart = 0;
+        //biomeStarted = false;
         biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
     }
 
