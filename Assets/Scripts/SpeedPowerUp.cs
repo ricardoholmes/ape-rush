@@ -11,6 +11,8 @@ public class SpeedPowerUp : MonoBehaviour
     {
         if (collider.CompareTag("Player") || collider.CompareTag("Monkey"))
         {
+            GetComponent<AudioSource>().Play();
+
             if (!PlayerMovement.isBoosting || boost >= PlayerMovement.boostAmount)
             {
                 PlayerMovement.isBoosting = true;
