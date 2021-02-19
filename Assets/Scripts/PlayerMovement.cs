@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public float deceleration = 1f;
     private float distanceTravelled;
 
+    public float rotationAngle = 50f;
+    public float rotationSpeed = 10f;
+
     public static bool isBoosting = false;
     public static float boostAmount;
     public static float stopBoostingTime;
@@ -43,8 +46,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //transform.position += new Vector3(0, 0, -Input.GetAxisRaw("Horizontal") * horizontalSpeed * Time.deltaTime);
         rigidbody.velocity = Input.GetAxisRaw("Horizontal") * horizontalForce * Vector3.back;
+        
+        Quaternion target = Quaternion.Euler(0, -90 + Input.GetAxisRaw("Horizontal") * rotationAngle, 0);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * rotationSpeed);
 
         distanceTravelledText.text = $"{Mathf.RoundToInt(distanceTravelled / 10)}m";
         animator.speed = Mathf.Clamp(currentSpeed / 50, 1f, float.PositiveInfinity);
