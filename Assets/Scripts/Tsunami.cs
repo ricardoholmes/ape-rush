@@ -103,7 +103,7 @@ public class Tsunami : MonoBehaviour
     IEnumerator FadeOut()
     {
         fadeAnimator.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("GameOver");
     }
 
