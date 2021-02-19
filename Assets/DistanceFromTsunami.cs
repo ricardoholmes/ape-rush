@@ -6,6 +6,7 @@ using TMPro;
 public class DistanceFromTsunami : MonoBehaviour
 {
     TMP_Text textComponent;
+    public int redTrigger = 2;
     void Start()
     {
         textComponent = GetComponent<TMP_Text>();
@@ -13,7 +14,7 @@ public class DistanceFromTsunami : MonoBehaviour
 
     void Update()
     {
-        if (int.Parse(textComponent.text.Split('m')[0]) <= 2)
+        if (int.Parse(textComponent.text.Split('m')[0]) <= redTrigger)
         {
             textComponent.color = new Color32(255, 0, 0, 255);
 
