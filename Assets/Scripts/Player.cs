@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
         monkeyChild.GetComponent<MonkeyChildren>().posIndex = index;
 
         pos.position -= offset;
+        pos.GetComponent<DontMove>().localPos -= offset;
         index = (index + 1) % spawnPositions.Count;
     }
 
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour
     {
         Transform pos = spawnPositions[monkey.GetComponent<MonkeyChildren>().posIndex];
         pos.position += offset;
+        pos.GetComponent<DontMove>().localPos += offset;
         index = ((index - 1) + spawnPositions.Count) % spawnPositions.Count;
         Destroy(monkey);
     }

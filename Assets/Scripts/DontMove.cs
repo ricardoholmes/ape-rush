@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DontMove : MonoBehaviour
 {
-    Vector3 localPos;
+    [HideInInspector]
+    public Vector3 localPos;
 
-    public bool ignoreX;
-    public bool ignoreY;
-    public bool ignoreZ;
+    //public bool ignoreX;
+    //public bool ignoreY;
+    //public bool ignoreZ;
 
     void Awake()
     {
@@ -17,12 +18,13 @@ public class DontMove : MonoBehaviour
 
     void Update()
     {
-        Vector3 pos = new Vector3
-        {
-            x = ignoreX ? transform.localPosition.x : localPos.x,
-            y = ignoreY ? transform.localPosition.y : localPos.y,
-            z = ignoreZ ? transform.localPosition.z : localPos.z
-        };
-        transform.localPosition = pos;
+        //Vector3 pos = new Vector3
+        //{
+        //    x = ignoreX ? transform.localPosition.x : localPos.x,
+        //    y = ignoreY ? transform.localPosition.y : localPos.y,
+        //    z = ignoreZ ? transform.localPosition.z : localPos.z
+        //};
+        //transform.localPosition = pos;
+        transform.localPosition = localPos;
     }
 }
