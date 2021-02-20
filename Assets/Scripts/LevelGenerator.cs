@@ -10,7 +10,7 @@ public class LevelGenerator : MonoBehaviour
     [Range(0, 1)]
     public float cageProbability = 0.05f;
     [Range(0, 1)]
-    public float invertProbability = 0.3f;
+    public float invertProbability = 0.5f;
     public GameObject cage;
 
     public List<Material> biomes;
@@ -84,9 +84,6 @@ public class LevelGenerator : MonoBehaviour
         {
             Transform newObstacle;
 
-            //if (Random.value <= invertProbability)
-            //    i.position = new Vector3(i.position.x, i.position.y, i.position.z * -1);
-
             if (Random.value <= cageProbability)
                 newObstacle = Instantiate(cage, i.position, Quaternion.identity, newLevelTransform).transform;
             else
@@ -101,22 +98,24 @@ public class LevelGenerator : MonoBehaviour
             Destroy(i.gameObject);
         }
 
-
-        for (int i = 0; i < newLevelTransform.childCount; i++)
+        if (Random.value <= invertProbability)
         {
-            if (!newLevelTransform.GetChild(i).CompareTag("Wall"))
+            for (int i = 0; i < newLevelTransform.childCount; i++)
             {
-                Transform child = newLevelTransform.GetChild(i);
-                child.position = new Vector3(child.position.x, child.position.y, child.position.z * -1);
+                if (!newLevelTransform.GetChild(i).CompareTag("Wall"))
+                {
+                    Transform child = newLevelTransform.GetChild(i);
+                    child.position = new Vector3(child.position.x, child.position.y, child.position.z * -1);
+                }
             }
         }
-
+        
         newLevelTransform.GetComponent<Renderer>().material = biomes[currentBiome];
         biomeLengthRemaining--;
         if (biomeLengthRemaining == 0)
         {
             List<int> possibleBiomes = new List<int>();
-            for (int i = 0; i < biomes.Count; i++)
+            for (int i = 1; i < biomes.Count; i++)
                 if (i != currentBiome)
                     possibleBiomes.Add(i);
 
