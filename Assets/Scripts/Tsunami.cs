@@ -38,6 +38,8 @@ public class Tsunami : MonoBehaviour
 
     private float startTime;
 
+    float previousDistance;
+
     private void Awake()
     {
         kill = false;
@@ -72,11 +74,15 @@ public class Tsunami : MonoBehaviour
             float playerAcceleration = player.GetComponent<PlayerMovement>().acceleration;
             float playerSpeed = player.GetComponent<PlayerMovement>().currentSpeed;
 
+
             if (distance < 0)
                 KillPlayer();
 
             if (!firstHit && Time.time >= stopSlow)
                 kill = true;
+
+            if (previousDistance > distance)
+                kill = false;
 
             if (distance <= 1f && firstHit && !kill)
             {
@@ -102,6 +108,8 @@ public class Tsunami : MonoBehaviour
 
                 acceleration = initialAcceleration;
             }
+
+            previousDistance = distance;
         }
 
         if (Time.time > startTime)
