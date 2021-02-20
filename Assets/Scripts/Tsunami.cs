@@ -18,7 +18,7 @@ public class Tsunami : MonoBehaviour
 
     public static bool kill;
 
-    readonly float closeKillDelay = 10f;
+    readonly float closeKillDelay = 3f;
     float stopSlow;
 
     public float maxSpeedAcceleration;

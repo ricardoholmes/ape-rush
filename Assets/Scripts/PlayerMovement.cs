@@ -69,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
         transform.position += Vector3.right * currentSpeed * Time.fixedDeltaTime;
         distanceTravelled += currentSpeed * Time.fixedDeltaTime;
 
+        float currentMaxSpeed = maxSpeed + 0.75f * Player.monkeyCount;
+
         if (isBoosting && Time.time > stopBoostingTime)
         {
             isBoosting = false;
@@ -77,21 +79,30 @@ public class PlayerMovement : MonoBehaviour
         if (!isBoosting && currentSpeed > maxSpeed)
         {
             // if is slowing down
-            currentSpeed = Mathf.Clamp(currentSpeed - deceleration * Time.fixedDeltaTime, maxSpeed + 1 * Player.monkeyCount, float.PositiveInfinity);
+            currentSpeed = Mathf.Clamp(currentSpeed - deceleration * Time.fixedDeltaTime, currentMaxSpeed, float.PositiveInfinity);
         }
         else if (!isBoosting)
         {
             // if isnt boosting
-            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, maxSpeed + 1 * Player.monkeyCount);
+            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.fixedDeltaTime, 0, currentMaxSpeed);
             //currentSpeed = currentSpeed + acceleration * Time.fixedDeltaTime;
         }
         else
         {
             // if is boosting
-            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount + 1 * Player.monkeyCount);
+            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount + 0.75f * Player.monkeyCount);
         }
 
-        speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (Time.fixedDeltaTime))} kph";
+        if (currentSpeed > currentMaxSpeed)
+            speedText.color = Color.magenta;
+
+        else if (currentSpeed == currentMaxSpeed)
+            speedText.color = Color.red;
+
+        else
+            speedText.color = Color.black;
+
+        speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (Time.fixedDeltaTime))}kmph";
     }
 
     void OnTriggerEnter(Collider collider)
