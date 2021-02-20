@@ -871,6 +871,7 @@ MonoBehaviour:
   - {fileID: 2725695303929897615, guid: 91105de018885604daafc1b27924d191, type: 3}
   - {fileID: 2725695303929897615, guid: 704ee492e4151a74fb9a590b89945bf3, type: 3}
   - {fileID: 2725695303929897615, guid: 311f1a6dc53624942b867a8506258dde, type: 3}
+  - {fileID: 2725695303929897615, guid: 96db585a33acb3c4f960e0c8dbb649a7, type: 3}
   cageProbability: 0.05
   cage: {fileID: 1458603155516115177, guid: f8bfe33876e012c4a8aafbf441a4ffc1, type: 3}
   biomes:
