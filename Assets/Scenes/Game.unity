@@ -888,7 +888,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 0848bb27336bfba4394883ab9f2b878e, type: 2}
   - {fileID: 2100000, guid: 6929728e8f232e94ca28188d2212ed32, type: 2}
   - {fileID: 2100000, guid: 28b5b73af983a30439e74e85abd2b361, type: 2}
-  - {fileID: 2100000, guid: 42b4e5822950df544b664bcc5d76b932, type: 2}
   - {fileID: 2100000, guid: 8826351ca9e69cd429262aa25ec7ab2f, type: 2}
   obstacles:
   - {fileID: 6338978613741743506, guid: d1628bf6c5c0fb346a2268091f75331b, type: 3}
