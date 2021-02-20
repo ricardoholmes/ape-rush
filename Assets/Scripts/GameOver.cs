@@ -20,9 +20,9 @@ public class GameOver : MonoBehaviour
     {
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Score\n{PlayerPrefs.GetString("Score")}";
         transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = $"Highest Score\n{PlayerPrefs.GetString("HighestScore")}";
-        transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = $"Apes rescued {PlayerPrefs.GetInt("Rescued")}";
-        transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = $"Apes fallen {PlayerPrefs.GetInt("Monkeys")}";
-        transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = $"Apes abandoned {PlayerPrefs.GetInt("Monkeys")}";
+        transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = $"Apes rescued\n{PlayerPrefs.GetInt("Rescued")}";
+        transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = $"Apes fallen\n{PlayerPrefs.GetInt("Sacrificed")}";
+        transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = $"Apes abandoned\n{PlayerPrefs.GetInt("Monkeys")}";
     }
 
     public void Play()

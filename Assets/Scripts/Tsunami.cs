@@ -137,7 +137,7 @@ public class Tsunami : MonoBehaviour
             PlayerPrefs.SetString("HighestScore", distance);
 
         PlayerPrefs.SetInt("Rescued", Cage.monkeyCount);
-        PlayerPrefs.SetInt("Sacrificed", Cage.monkeyCount);
+        PlayerPrefs.SetInt("Fallen", Obstacle.sacrificedCount);
 
         PlayerPrefs.Save();
         Destroy(player.gameObject);
