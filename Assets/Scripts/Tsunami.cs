@@ -65,7 +65,7 @@ public class Tsunami : MonoBehaviour
     {
         if (!playerDead)
         {
-            audioSource.volume = Mathf.Clamp(1 - ((player.position.x - transform.position.x) / maxHearingDistance), 0.03f, 0.05f);
+            audioSource.volume = Mathf.Clamp(1 - ((player.position.x - transform.position.x) / maxHearingDistance), 0.05f, 0.1f);
             distanceText.text = $"{Mathf.RoundToInt((player.position.x - transform.position.x) / 10)}m";
         }
     }
