@@ -5,7 +5,6 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     public int mass = 1;
-
     public static int sacrificedCount;
 
     private void OnTriggerEnter(Collider collider)
@@ -16,9 +15,10 @@ public class Obstacle : MonoBehaviour
             if (distance <= 20)
                 Tsunami.kill = true;
 
-            Player.monkeyCount = Mathf.Clamp(Player.monkeyCount - mass, 0, int.MaxValue);
+            int newMonkeyCount = Mathf.Clamp(Player.monkeyCount - mass, 0, int.MaxValue);
+            Cage.monkeyCount -= Player.monkeyCount - newMonkeyCount;
+            Player.monkeyCount = newMonkeyCount;
             sacrificedCount++;
-            Cage.monkeyCount--;
             Destroy(gameObject);
         }
     }

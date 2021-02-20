@@ -146,6 +146,7 @@ public class Tsunami : MonoBehaviour
 
         PlayerPrefs.SetInt("Rescued", Cage.monkeyCount);
         PlayerPrefs.SetInt("Fallen", Obstacle.sacrificedCount);
+        PlayerPrefs.SetInt("Abandoned", NextPlatform.abandonded);
 
         PlayerPrefs.Save();
         Destroy(player.gameObject);

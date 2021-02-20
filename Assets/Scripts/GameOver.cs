@@ -22,7 +22,7 @@ public class GameOver : MonoBehaviour
         transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = $"Highest Score\n{PlayerPrefs.GetString("HighestScore")}";
         transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = $"Apes rescued\n{PlayerPrefs.GetInt("Rescued")}";
         transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = $"Apes fallen\n{PlayerPrefs.GetInt("Sacrificed")}";
-        transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = $"Apes abandoned\n{PlayerPrefs.GetInt("Monkeys")}";
+        transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = $"Apes abandoned\n{PlayerPrefs.GetInt("Abandoned")}";
     }
 
     public void Play()
