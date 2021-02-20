@@ -73,7 +73,7 @@ public class Tsunami : MonoBehaviour
             float playerSpeed = player.GetComponent<PlayerMovement>().currentSpeed;
 
             if (distance < 0)
-                OnTriggerEnter(player.GetComponent<Collider>());
+                KillPlayer();
 
             if (!firstHit && stopSlow >= Time.time)
                 kill = true;
@@ -122,16 +122,21 @@ public class Tsunami : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            CameraMovement.stop = true;
-            playerDead = true;
-            transform.GetChild(0).GetComponent<AudioSource>().Play();
-            string distance = distanceTravelled.text;
-            PlayerPrefs.SetString("Score", distance);
-            if (int.Parse(PlayerPrefs.GetString("HighestScore", "0m").Split('m')[0]) < int.Parse(distance.Split('m')[0]))
-                PlayerPrefs.SetString("HighestScore", distance);
-            PlayerPrefs.Save();
-            Destroy(player.gameObject);
-            StartCoroutine(FadeOut());
+            KillPlayer();
         }
+    }
+
+    void KillPlayer()
+    {
+        CameraMovement.stop = true;
+        playerDead = true;
+        transform.GetChild(0).GetComponent<AudioSource>().Play();
+        string distance = distanceTravelled.text;
+        PlayerPrefs.SetString("Score", distance);
+        if (int.Parse(PlayerPrefs.GetString("HighestScore", "0m").Split('m')[0]) < int.Parse(distance.Split('m')[0]))
+            PlayerPrefs.SetString("HighestScore", distance);
+        PlayerPrefs.Save();
+        Destroy(player.gameObject);
+        StartCoroutine(FadeOut());
     }
 }
