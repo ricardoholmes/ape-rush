@@ -1204,8 +1204,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000015259, y: -51}
-  m_SizeDelta: {x: 715.2281, y: 60.4898}
+  m_AnchoredPosition: {x: -411, y: -51}
+  m_SizeDelta: {x: 400, y: 60.4898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1074113580
 MonoBehaviour:
@@ -1254,14 +1254,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2145,7 +2145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9180107182739905400, guid: d9242d1a05f11b143a671be6bf79cecf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9180107182739905401, guid: d9242d1a05f11b143a671be6bf79cecf, type: 3}
       propertyPath: m_Pivot.x
