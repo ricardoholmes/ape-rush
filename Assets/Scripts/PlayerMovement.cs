@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     //public float horizontalSpeed = 10f;
     public float horizontalForce = 10f;
 
+    public GameObject obstacleDestroyParticles;
+
     public TextMeshProUGUI speedText;
     public TextMeshProUGUI distanceTravelledText;
 
@@ -97,6 +99,8 @@ public class PlayerMovement : MonoBehaviour
             float mass = collider.GetComponent<Obstacle>().mass;
 
             currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeyCount, 0, maxSpeed);
+
+            Instantiate(obstacleDestroyParticles, collider.transform.position, obstacleDestroyParticles.transform.rotation, collider.transform.parent);
         }
 
         else if (collider.CompareTag("Cage"))
