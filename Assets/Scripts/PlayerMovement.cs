@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        rigidbody.velocity = Input.GetAxisRaw("Horizontal") * horizontalForce * Vector3.back;
         
         Quaternion target = Quaternion.Euler(0, -90 + Input.GetAxisRaw("Horizontal") * rotationAngle, 0);
 
@@ -60,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        rigidbody.velocity = Input.GetAxisRaw("Horizontal") * horizontalForce * Vector3.back;
+
         float previousX = transform.position.x;
         //rigidbody.AddForce(Vector3.right * currentSpeed);
         transform.position += Vector3.right * currentSpeed * Time.fixedDeltaTime;
