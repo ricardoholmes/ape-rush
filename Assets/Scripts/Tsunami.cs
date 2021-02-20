@@ -81,7 +81,7 @@ public class Tsunami : MonoBehaviour
             if (!firstHit && Time.time >= stopSlow)
                 kill = true;
 
-            if (previousDistance > distance)
+            if (previousDistance < distance)
                 kill = false;
 
             if (distance <= 1f && firstHit && !kill)

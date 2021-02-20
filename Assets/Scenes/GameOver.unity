@@ -597,7 +597,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Score
 
-    1000'
+    x'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 26789bd3d40ab324ca2c0488c2651313, type: 2}
   m_sharedMaterial: {fileID: 8365878795639555166, guid: 26789bd3d40ab324ca2c0488c2651313, type: 2}
@@ -852,7 +852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1429842647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -988,7 +988,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Highest Score
 
-    1000'
+    x'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 26789bd3d40ab324ca2c0488c2651313, type: 2}
   m_sharedMaterial: {fileID: 8365878795639555166, guid: 26789bd3d40ab324ca2c0488c2651313, type: 2}
