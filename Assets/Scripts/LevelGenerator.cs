@@ -11,7 +11,8 @@ public class LevelGenerator : MonoBehaviour
     public float cageProbability = 0.05f;
     public GameObject cage;
 
-    public List<BiomeObjects> biomes;
+    public List<Material> biomes;
+    public List<GameObject> obstacles;
 
     int currentBiome;
     int biomeLengthRemaining;
@@ -67,7 +68,7 @@ public class LevelGenerator : MonoBehaviour
         Transform newLevelTransform = Instantiate(maps[Random.Range(0, maps.Length)].transform, lastEndPosition, Quaternion.identity, transform);
         lastEndPosition = newLevelTransform.Find("EndPosition").position + new Vector3(95, 0.001f, 0);
 
-        GameObject[] biomeObjects = biomes[currentBiome].obstacles;
+        //GameObject[] biomeObjects = biomes[currentBiome].obstacles;
         List<Transform> obstaclesList = new List<Transform>();
         for (int i = 0; i < newLevelTransform.childCount; i++)
         {
@@ -83,7 +84,7 @@ public class LevelGenerator : MonoBehaviour
             if (Random.value <= cageProbability)
                 newObstacle = Instantiate(cage, i.position, Quaternion.identity, newLevelTransform).transform;
             else
-                newObstacle = Instantiate(biomeObjects[Random.Range(0, biomeObjects.Length)], i.position, Quaternion.identity, newLevelTransform).transform;
+                newObstacle = Instantiate(obstacles[Random.Range(0, obstacles.Count)], i.position, Quaternion.identity, newLevelTransform).transform;
 
             Vector3 newScale = newObstacle.localScale;
             newScale.x /= newLevelTransform.localScale.x;
@@ -94,7 +95,7 @@ public class LevelGenerator : MonoBehaviour
             Destroy(i.gameObject);
         }
 
-        newLevelTransform.GetComponent<Renderer>().material = biomes[currentBiome].floorMaterial;
+        newLevelTransform.GetComponent<Renderer>().material = biomes[currentBiome];
         biomeLengthRemaining--;
         if (biomeLengthRemaining == 0)
         {
