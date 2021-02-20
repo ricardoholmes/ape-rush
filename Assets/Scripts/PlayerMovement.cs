@@ -53,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
 
         transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * rotationSpeed);
 
+        if (Mathf.Abs(transform.position.z) >= 17f)
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+
         distanceTravelledText.text = $"{Mathf.RoundToInt(distanceTravelled / 10)}m";
         animator.speed = Mathf.Clamp(currentSpeed / 50, 1f, float.PositiveInfinity);
     }
