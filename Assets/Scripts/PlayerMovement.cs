@@ -93,6 +93,8 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount + 1f * Player.monkeyCount);
         }
 
+        currentSpeed = Mathf.Clamp(currentSpeed, 0, 120);
+
         if (currentSpeed > currentMaxSpeed)
             speedText.color = new Color(255, 0, 0);
 
