@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float obstacleSlowCoefficient = 0.5f;
 
+    public static float currentMaxSpeed;
+
     private void Awake()
     {
         distanceTravelled = 0;
@@ -69,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position += Vector3.right * currentSpeed * Time.fixedDeltaTime;
         distanceTravelled += currentSpeed * Time.fixedDeltaTime;
 
-        float currentMaxSpeed = maxSpeed + 1f * Player.monkeyCount;
+        currentMaxSpeed = maxSpeed + 1f * Player.monkeyCount;
 
         if (isBoosting && Time.time > stopBoostingTime)
         {
