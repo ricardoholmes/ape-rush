@@ -15,9 +15,7 @@ public class Obstacle : MonoBehaviour
             if (distance <= 20)
                 Tsunami.kill = true;
 
-            int newMonkeyCount = Mathf.Clamp(Player.monkeyCount - mass, 0, int.MaxValue);
-            Cage.monkeyCount -= Player.monkeyCount - newMonkeyCount;
-            Player.monkeyCount = newMonkeyCount;
+            Player.monkeyCount = Mathf.Clamp(Player.monkeyCount - mass, 0, int.MaxValue);
             sacrificedCount++;
             Destroy(gameObject);
         }
