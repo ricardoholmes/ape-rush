@@ -223,8 +223,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.023562, y: 25.368614, z: 184.93314}
-  m_Center: {x: -1.3488667, y: 0.006213723, z: 86.627625}
+  m_Size: {x: 10.023562, y: 98.41429, z: 184.93314}
+  m_Center: {x: -1.3488665, y: -3.3139331, z: 86.62761}
 --- !u!114 &5278483228140897799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +243,7 @@ MonoBehaviour:
   maxSpeedAcceleration: 0
   delay: 1
   distanceText: {fileID: 0}
+  distanceTravelled: {fileID: 0}
 --- !u!82 &5195770852270263184
 AudioSource:
   m_ObjectHideFlags: 0
