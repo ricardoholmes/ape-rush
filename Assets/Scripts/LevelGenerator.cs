@@ -18,18 +18,12 @@ public class LevelGenerator : MonoBehaviour
     public int minBiomeLength;
     public int maxBiomeLength;
 
-    //float nextBiomeStart;
-    //bool biomeStarted;
-
     private readonly float triggerDistance = 300f;
     private Vector3 lastEndPosition;
 
     private void Awake()
     {
-        // reset biome and biome length remaining
         currentBiome = 0;
-        //nextBiomeStart = 0;
-        //biomeStarted = false;
         biomeLengthRemaining = Random.Range(minBiomeLength, maxBiomeLength);
     }
 
@@ -51,12 +45,6 @@ public class LevelGenerator : MonoBehaviour
             {
                 MoveBack();
             }
-
-            //if (player.position.x >= nextBiomeStart && !biomeStarted)
-            //{
-            //    player.GetComponent<AudioSource>().clip = biomes[currentBiome].steppingSound;
-            //    biomeStarted = true;
-            //}
         }
     }
 
@@ -72,7 +60,6 @@ public class LevelGenerator : MonoBehaviour
             transform.GetChild(i).position += moveVector;
 
         lastEndPosition += moveVector;
-        //nextBiomeStart -= moveVector.magnitude;
     }
 
     private void SpawnLevel()
@@ -111,7 +98,6 @@ public class LevelGenerator : MonoBehaviour
         biomeLengthRemaining--;
         if (biomeLengthRemaining == 0)
         {
-            //nextBiomeStart = newLevelTransform.Find("EndPosition").position.x;
             List<int> possibleBiomes = new List<int>();
             for (int i = 1; i < biomes.Count; i++)
                 if (i != currentBiome)
