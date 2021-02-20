@@ -18,7 +18,7 @@ public class Tsunami : MonoBehaviour
 
     public static bool kill;
 
-    readonly float closeKillDelay = 3f;
+    readonly float closeKillDelay = 7f;
     float stopSlow;
 
     public float maxSpeedAcceleration;
@@ -136,7 +136,8 @@ public class Tsunami : MonoBehaviour
         if (int.Parse(PlayerPrefs.GetString("HighestScore", "0m").Split('m')[0]) < int.Parse(distance.Split('m')[0]))
             PlayerPrefs.SetString("HighestScore", distance);
 
-        PlayerPrefs.SetInt("Monkeys", Cage.monkeyCount);
+        PlayerPrefs.SetInt("Rescued", Cage.monkeyCount);
+        PlayerPrefs.SetInt("Sacrificed", Cage.monkeyCount);
 
         PlayerPrefs.Save();
         Destroy(player.gameObject);

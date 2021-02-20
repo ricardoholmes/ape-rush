@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position += Vector3.right * currentSpeed * Time.fixedDeltaTime;
         distanceTravelled += currentSpeed * Time.fixedDeltaTime;
 
-        float currentMaxSpeed = maxSpeed + 0.75f * Player.monkeyCount;
+        float currentMaxSpeed = maxSpeed + 1f * Player.monkeyCount;
 
         if (isBoosting && Time.time > stopBoostingTime)
         {
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // if is boosting
-            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount + 0.75f * Player.monkeyCount);
+            currentSpeed = Mathf.Clamp(currentSpeed + acceleration * boostAmount * Time.fixedDeltaTime, 0, maxSpeed * boostAmount + 1f * Player.monkeyCount);
         }
 
         if (currentSpeed > currentMaxSpeed)

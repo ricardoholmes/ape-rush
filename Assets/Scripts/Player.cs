@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        monkeyCount = 0;
+
         index = 0;
         for (int i = 0; i < transform.childCount; i++)
             if (transform.GetChild(i).name.Contains("Pos"))

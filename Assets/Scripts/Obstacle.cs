@@ -6,6 +6,8 @@ public class Obstacle : MonoBehaviour
 {
     public int mass = 1;
 
+    public static int sacrificedCount;
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
@@ -15,6 +17,8 @@ public class Obstacle : MonoBehaviour
                 Tsunami.kill = true;
 
             Player.monkeyCount = Mathf.Clamp(Player.monkeyCount - mass, 0, int.MaxValue);
+            sacrificedCount++;
+            Cage.monkeyCount--;
             Destroy(gameObject);
         }
     }
