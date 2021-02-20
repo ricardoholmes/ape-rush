@@ -116,7 +116,7 @@ public class LevelGenerator : MonoBehaviour
         if (biomeLengthRemaining == 0)
         {
             List<int> possibleBiomes = new List<int>();
-            for (int i = 1; i < biomes.Count; i++)
+            for (int i = 0; i < biomes.Count; i++)
                 if (i != currentBiome)
                     possibleBiomes.Add(i);
 

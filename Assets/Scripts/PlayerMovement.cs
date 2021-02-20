@@ -120,11 +120,6 @@ public class PlayerMovement : MonoBehaviour
 
                 Instantiate(obstacleDestroyParticles, collider.transform.position, obstacleDestroyParticles.transform.rotation, collider.transform.parent);
             }
-
-            else if (collider.CompareTag("Cage"))
-            {
-                currentSpeed = Mathf.Clamp(currentSpeed * 0.75f, 0, maxSpeed);
-            }
         }
     }
 }
