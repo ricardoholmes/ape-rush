@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public GameObject monkey;
     private int index;
 
-    Vector3 offset = new Vector3(1.5f, 0, 0);
+    Vector3 offset = new Vector3(2f, 0, 0);
 
     public static int monkeyCount;
     public static Transform player;
@@ -28,10 +28,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            monkeyCount++;
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    monkeyCount++;
+        //}
 
         if (MonkeyChildCount() < monkeyCount)
         {
