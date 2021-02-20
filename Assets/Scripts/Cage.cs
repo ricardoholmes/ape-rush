@@ -12,7 +12,10 @@ public class Cage : MonoBehaviour
         {
             Player.monkeyCount++;
             monkeyCount++;
-            Destroy(gameObject);
+
+            GetComponent<AudioSource>().Play();
+            GetComponent<BoxCollider>().enabled = false;
+            GetComponent<MeshRenderer>().enabled = false;
         }
     }
 }
