@@ -46,6 +46,10 @@ public class Tsunami : MonoBehaviour
         firstHit = true;
         playerDead = false;
         startTime = Time.time + delay;
+
+        Cage.monkeyCount = 0;
+        Obstacle.sacrificedCount = 0;
+        NextPlatform.abandonded = 0;
     }
 
     private void Start()
