@@ -21,6 +21,8 @@ public class MainMenu : MonoBehaviour
     public void ChangeVolume(string type, float volume)
     {
         volumeMixer.SetFloat(type, Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat(type, Mathf.Log10(volume) * 20);
+        PlayerPrefs.Save();
     }
 
     public void ChangeMasterVolume(float vol) { ChangeVolume("MasterVol", vol); }
