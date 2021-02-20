@@ -49,7 +49,7 @@ public class Tsunami : MonoBehaviour
     private void Start()
     {
         tsunami = transform;
-        initialMaxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.1f;
+        initialMaxSpeed = player.GetComponent<PlayerMovement>().maxSpeed * 1.3f;
         initialAcceleration = player.GetComponent<PlayerMovement>().acceleration * 1.1f;
 
         audioSource = GetComponent<AudioSource>();
@@ -91,12 +91,12 @@ public class Tsunami : MonoBehaviour
                 maxSpeed = playerSpeed * 1.2f;
                 acceleration = playerAcceleration * 1.1f;
             }
-            else if (distance >= 3f || kill)
+            else if (distance > 2f || kill)
             {
                 firstHit = true;
 
                 if (distance > 5f)
-                    maxSpeed = Mathf.Clamp(maxSpeed + maxSpeedAcceleration * Time.fixedDeltaTime * distance, initialMaxSpeed, playerSpeed * 1.3f);
+                    maxSpeed = Mathf.Clamp(maxSpeed + maxSpeedAcceleration * Time.fixedDeltaTime * distance, initialMaxSpeed, float.PositiveInfinity);/*playerSpeed * 1.3f*/
                 else
                     maxSpeed = initialMaxSpeed;
 
@@ -135,6 +135,9 @@ public class Tsunami : MonoBehaviour
         PlayerPrefs.SetString("Score", distance);
         if (int.Parse(PlayerPrefs.GetString("HighestScore", "0m").Split('m')[0]) < int.Parse(distance.Split('m')[0]))
             PlayerPrefs.SetString("HighestScore", distance);
+
+        PlayerPrefs.SetInt("Monkeys", Cage.monkeyCount);
+
         PlayerPrefs.Save();
         Destroy(player.gameObject);
         StartCoroutine(FadeOut());
