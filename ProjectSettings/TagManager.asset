@@ -8,6 +8,7 @@ TagManager:
   - PowerUp
   - Monkey
   - Cage
+  - Wall
   layers:
   - Default
   - TransparentFX
