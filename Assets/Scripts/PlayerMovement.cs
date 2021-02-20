@@ -96,20 +96,24 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Obstacle"))
+        if (collider.CompareTag("Obstacle") || collider.CompareTag("Cage"))
         {
-            int monkeyCount = Player.monkeyCount + 1;
+            transform.GetChild(0).GetComponent<AudioSource>().Play();
+            if (collider.CompareTag("Obstacle"))
+            {
+                int monkeyCount = Player.monkeyCount + 1;
 
-            float mass = collider.GetComponent<Obstacle>().mass;
+                float mass = collider.GetComponent<Obstacle>().mass;
 
-            currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeyCount, 0, maxSpeed);
+                currentSpeed = Mathf.Clamp(currentSpeed - obstacleSlowCoefficient * mass / monkeyCount, 0, maxSpeed);
 
-            Instantiate(obstacleDestroyParticles, collider.transform.position, obstacleDestroyParticles.transform.rotation, collider.transform.parent);
-        }
+                Instantiate(obstacleDestroyParticles, collider.transform.position, obstacleDestroyParticles.transform.rotation, collider.transform.parent);
+            }
 
-        else if (collider.CompareTag("Cage"))
-        {
-            currentSpeed = Mathf.Clamp(currentSpeed * 0.75f, 0, maxSpeed);
+            else if (collider.CompareTag("Cage"))
+            {
+                currentSpeed = Mathf.Clamp(currentSpeed * 0.75f, 0, maxSpeed);
+            }
         }
     }
 }
