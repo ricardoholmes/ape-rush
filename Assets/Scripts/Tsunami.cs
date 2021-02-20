@@ -90,9 +90,8 @@ public class Tsunami : MonoBehaviour
 
             if (distance <= 1f && firstHit && !kill)
             {
-                //maxSpeed = playerSpeed;
-                maxSpeed = playerMaxSpeed;
-                currentSpeed = playerSpeed;
+                //maxSpeed = playerMaxSpeed;
+                currentSpeed = maxSpeed =  playerSpeed;
                 acceleration = playerAcceleration;
                 firstHit = false;
 
