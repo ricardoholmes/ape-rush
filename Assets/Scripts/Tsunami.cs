@@ -77,7 +77,7 @@ public class Tsunami : MonoBehaviour
             float distance = (player.position.x - transform.position.x) / 10;
             float playerAcceleration = player.GetComponent<PlayerMovement>().acceleration;
             float playerSpeed = player.GetComponent<PlayerMovement>().currentSpeed;
-
+            float playerMaxSpeed = player.GetComponent<PlayerMovement>().maxSpeed;
 
             if (distance < 0)
                 KillPlayer();
@@ -90,7 +90,9 @@ public class Tsunami : MonoBehaviour
 
             if (distance <= 1f && firstHit && !kill)
             {
-                maxSpeed = playerSpeed;
+                //maxSpeed = playerSpeed;
+                maxSpeed = playerMaxSpeed;
+                currentSpeed = playerSpeed;
                 acceleration = playerAcceleration;
                 firstHit = false;
 
