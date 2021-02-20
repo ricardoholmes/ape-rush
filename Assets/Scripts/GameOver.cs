@@ -30,8 +30,8 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    public void Exit()
+    public void MainMenu()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 }
