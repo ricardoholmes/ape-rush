@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public GameObject monkey;
     private int index;
 
-    Vector3 offset = new Vector3(2f, 0, 0);
+    Vector3 offset = new Vector3(0, 0, -2f);
 
     public static int monkeyCount;
     public static Transform player;
