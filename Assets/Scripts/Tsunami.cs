@@ -96,7 +96,7 @@ public class Tsunami : MonoBehaviour
                 firstHit = true;
 
                 if (distance > 5f)
-                    maxSpeed = Mathf.Clamp(maxSpeed + maxSpeedAcceleration * Time.fixedDeltaTime * distance, initialMaxSpeed, float.PositiveInfinity);/*playerSpeed * 1.3f*/
+                    maxSpeed += maxSpeedAcceleration * Time.fixedDeltaTime * distance;
                 else
                     maxSpeed = initialMaxSpeed;
 
@@ -114,7 +114,7 @@ public class Tsunami : MonoBehaviour
     IEnumerator FadeOut()
     {
         fadeAnimator.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("GameOver");
     }
 

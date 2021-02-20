@@ -94,13 +94,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (currentSpeed > currentMaxSpeed)
-            speedText.color = Color.magenta;
+            speedText.color = new Color(255, 0, 0);
 
         else if (currentSpeed == currentMaxSpeed)
-            speedText.color = Color.red;
+            speedText.color = new Color(255, 132, 0);
 
         else
-            speedText.color = Color.black;
+            speedText.color = new Color(0, 115, 255);
 
         speedText.text = $"{Mathf.RoundToInt(3.6f * (transform.position.x - previousX) / (Time.fixedDeltaTime))}kmph";
     }
