@@ -10,9 +10,7 @@ public class NextPlatform : MonoBehaviour
     {
         if (Camera.main.transform.position.x - 100 > transform.position.x)
         {
-            for (int i = 0; i < transform.childCount; i++)
-                if (transform.GetChild(i).CompareTag("Cage"))
-                    abandonded++;
+            abandonded += GetComponentsInChildren<Cage>().Length;
             Destroy(gameObject);
         }
     }

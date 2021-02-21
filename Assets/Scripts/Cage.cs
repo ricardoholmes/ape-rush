@@ -16,6 +16,7 @@ public class Cage : MonoBehaviour
             GetComponent<AudioSource>().Play();
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<MeshRenderer>().enabled = false;
+            Destroy(this);
         }
     }
 }
